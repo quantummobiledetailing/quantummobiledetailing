@@ -1,8 +1,15 @@
 {
   "projects": {
-    "default": "my-nuxt-site-ae7d5",
-    "quantum": "my-nuxt-site-ae7d5"
+    "default": "my-nuxt-site-ae7d5"
   },
-  "targets": {},
+  "targets": {
+    "my-nuxt-site-ae7d5": {
+      "hosting": {
+        "default": [
+          "quantummobiledetailing"
+        ]
+      }
+    }
+  },
   "etags": {}
 }
