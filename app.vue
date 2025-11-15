@@ -3,7 +3,7 @@
     <header class="sticky top-0 z-20 border-b border-white/5 bg-slate-950/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
         <NuxtLink to="/" class="text-xl font-semibold text-white">
-          Quantum<span class="text-brand-primary">Detailing</span>
+          Quantum Mobile <span class="text-brand-primary">Detailing</span>
         </NuxtLink>
         <nav class="flex flex-wrap gap-4 text-sm font-semibold text-slate-300">
           <NuxtLink v-for="item in navLinks" :key="item.to" :to="item.to" class="tracking-wide hover:text-brand-primary">

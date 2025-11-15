@@ -28,36 +28,22 @@
 </template>
 
 <script setup lang="ts">
-const shots = [
-  {
-    title: 'GT3 Ceramic Elite',
-    description: 'Two-step correction followed by graphene coating before a Portland track weekend.',
-    image: 'https://images.unsplash.com/photo-1511918984145-48de785d4c4d?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    title: 'Model S Interior Reset',
-    description: 'Steam sanitation, leather hydration, and matte screen treatment after a rainy Highway 30 commute.',
-    image: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    title: 'Classic Bronco Revival',
-    description: 'Single-stage polish preserved original paint before a coastal camping trip.',
-    image: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    title: 'Fleet Maintenance',
-    description: 'Monthly washes keep this local concierge shuttle fresh for guests.',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    title: 'Headlight Restoration',
-    description: 'Wet-sand and UV coat drastically improved clarity on this forest road SUV.',
-    image: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    title: 'Wheel Coating',
-    description: 'Wheels coated to fight Columbia River Gorge brake dust.',
-    image: 'https://images.unsplash.com/photo-1447639703758-f525f36456bf?auto=format&fit=crop&w=800&q=80',
-  },
-]
+const galleryModules = import.meta.glob('@/assets/gallery/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  import: 'default',
+})
+
+const shots = Object.entries(galleryModules).map(([path, src]) => {
+  const filename = path.split('/').pop() ?? 'Gallery Image'
+  const baseName = filename.replace(/\.[^/.]+$/, '')
+  const prettyTitle = baseName
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+
+  return {
+    title: prettyTitle,
+    description: 'Captured on-site across Saint Helens and the Oregon Northwest.',
+    image: src as string,
+  }
+})
 </script>
