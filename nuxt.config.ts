@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Premium mobile detailing services with on-site booking and personalized care.',
+            'Quantum Mobile Detailing provides premium mobile car detailing across Saint Helens and the Oregon Northwest.',
         },
       ],
     },

@@ -77,7 +77,7 @@ function createHead(options = {}) {
   return head;
 }
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"description","content":"Premium mobile detailing services with on-site booking and personalized care."}],"link":[],"style":[],"script":[],"noscript":[],"title":"Quantum Mobile Detailing"};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"description","content":"Quantum Mobile Detailing provides premium mobile car detailing across Saint Helens and the Oregon Northwest."}],"link":[],"style":[],"script":[],"noscript":[],"title":"Quantum Mobile Detailing"};
 
 const appRootTag = "div";
 

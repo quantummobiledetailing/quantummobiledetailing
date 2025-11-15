@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "dist",
+    "site": "quantummobiledetailing",
+    "public": ".output/public",
     "ignore": [
       "firebase.json",
       "**/.*",
