@@ -20,9 +20,7 @@
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Follow Along</p>
       <h2 class="mt-3 text-3xl font-semibold text-white">See more Northwest builds on Instagram @QuantumDetailing</h2>
       <p class="mt-2 text-sm text-slate-300">Ready for your vehicle to make the next before-and-after? We come to you anywhere in Columbia County.</p>
-      <NuxtLink to="/booking" class="mt-6 inline-flex justify-center rounded-full bg-brand-primary px-8 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-950">
-        Book Your Transformation
-      </NuxtLink>
+      <a href="tel:+15415010698" class="mt-6 btn-primary">Call For Your Transformation</a>
     </section>
   </main>
 </template>

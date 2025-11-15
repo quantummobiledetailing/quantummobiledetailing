@@ -1,4 +1,4 @@
-import { shallowReactive, reactive, effectScope, getCurrentScope, hasInjectionContext, getCurrentInstance, inject, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, defineComponent, h, resolveComponent, computed, provide, ref, Suspense, Fragment, mergeProps, withCtx, createTextVNode, createVNode, toDisplayString, unref, useSSRContext, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, createApp } from "vue";
+import { shallowReactive, reactive, effectScope, getCurrentScope, hasInjectionContext, getCurrentInstance, inject, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, defineComponent, h, resolveComponent, computed, provide, ref, Suspense, Fragment, mergeProps, withCtx, createVNode, createTextVNode, toDisplayString, unref, useSSRContext, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, createApp } from "vue";
 import { $fetch } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/ofetch/dist/node.mjs";
 import { baseURL } from "#internal/nuxt/paths";
 import { createHooks } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/hookable/dist/index.mjs";
@@ -381,27 +381,27 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import("./_nuxt/about-C-FOCcRE.js")
+    component: () => import("./_nuxt/about-R5LluImW.js")
   },
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-Dq7K_X-A.js")
+    component: () => import("./_nuxt/index-BgKYEX5-.js")
   },
   {
     name: "booking",
     path: "/booking",
-    component: () => import("./_nuxt/booking-DdPDTwMB.js")
+    component: () => import("./_nuxt/booking-B7ZdOZC5.js")
   },
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import("./_nuxt/gallery-DJ_Z7UaL.js")
+    component: () => import("./_nuxt/gallery-BJEyDf-6.js")
   },
   {
     name: "services",
     path: "/services",
-    component: () => import("./_nuxt/services-7iF3d2h6.js")
+    component: () => import("./_nuxt/services-C0Y4ov2a.js")
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
@@ -1165,31 +1165,31 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       { label: "Home", to: "/" },
       { label: "Services", to: "/services" },
       { label: "About", to: "/about" },
-      { label: "Gallery", to: "/gallery" },
-      { label: "Booking", to: "/booking" }
+      { label: "Gallery", to: "/gallery" }
     ];
     const currentYear = (/* @__PURE__ */ new Date()).getFullYear();
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0;
       const _component_NuxtPage = __nuxt_component_1;
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-slate-950 text-slate-100" }, _attrs))}><header class="sticky top-0 z-20 border-b border-white/5 bg-slate-950/95 backdrop-blur"><div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-slate-950 text-slate-100" }, _attrs))}><header class="sticky top-0 z-20 border-b border-white/10 bg-black/85 backdrop-blur"><div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">`);
       _push(ssrRenderComponent(_component_NuxtLink, {
         to: "/",
-        class: "text-xl font-semibold text-white"
+        class: "text-2xl font-semibold tracking-wide"
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(` Quantum Mobile <span class="text-brand-primary"${_scopeId}>Detailing</span>`);
+            _push2(`<span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent"${_scopeId}>Quantum</span><span class="text-brand-primary"${_scopeId}> Mobile </span><span class="bg-gradient-to-r from-brand-primary via-red-200 to-white bg-clip-text text-transparent"${_scopeId}>Detailing</span>`);
           } else {
             return [
-              createTextVNode(" Quantum Mobile "),
-              createVNode("span", { class: "text-brand-primary" }, "Detailing")
+              createVNode("span", { class: "bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent" }, "Quantum"),
+              createVNode("span", { class: "text-brand-primary" }, " Mobile "),
+              createVNode("span", { class: "bg-gradient-to-r from-brand-primary via-red-200 to-white bg-clip-text text-transparent" }, "Detailing")
             ];
           }
         }),
         _: 1
       }, _parent));
-      _push(`<nav class="flex flex-wrap gap-4 text-sm font-semibold text-slate-300"><!--[-->`);
+      _push(`<nav class="flex flex-wrap gap-4 text-sm font-semibold text-brand-accent"><!--[-->`);
       ssrRenderList(navLinks, (item) => {
         _push(ssrRenderComponent(_component_NuxtLink, {
           key: item.to,
@@ -1208,23 +1208,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
           _: 2
         }, _parent));
       });
-      _push(`<!--]--></nav>`);
-      _push(ssrRenderComponent(_component_NuxtLink, {
-        to: "/booking",
-        class: "hidden rounded-full border border-brand-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-brand-primary transition hover:bg-brand-primary hover:text-slate-950 md:inline-flex"
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(` Book Now `);
-          } else {
-            return [
-              createTextVNode(" Book Now ")
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</div></header>`);
+      _push(`<!--]--></nav><button class="hidden btn-outline md:inline-flex opacity-50 cursor-not-allowed" title="Online booking coming soon"> Booking Offline </button></div></header>`);
       _push(ssrRenderComponent(_component_NuxtPage, null, null, _parent));
       _push(`<footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10"><div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>Serving Saint Helens &amp; the Oregon Northwest • © ${ssrInterpolate(unref(currentYear))} Quantum Mobile Detailing</p><div class="flex gap-4 text-slate-500"><a href="mailto:quantummobiledetailingllc@gmail.com" class="hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a><a href="tel:+15415010698" class="hover:text-brand-primary">(541) 501-0698</a></div></div></footer></div>`);
     };

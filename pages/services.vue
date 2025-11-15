@@ -20,9 +20,9 @@
         <ul class="mt-4 space-y-2 text-sm text-slate-200">
           <li v-for="item in servicePackage.features" :key="item">- {{ item }}</li>
         </ul>
-        <NuxtLink to="/booking" class="mt-6 inline-flex justify-center rounded-full border border-brand-primary px-4 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-brand-primary hover:bg-brand-primary hover:text-slate-950">
-          Book {{ servicePackage.title }}
-        </NuxtLink>
+        <button type="button" class="mt-6 btn-outline text-center" @click="openPhone(servicePackage.title)">
+          Call About {{ servicePackage.title }}
+        </button>
       </article>
     </section>
 
@@ -48,10 +48,48 @@
         </ol>
       </article>
     </section>
+    <Teleport to="body">
+      <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
+        <div class="relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
+          <button class="absolute right-4 top-4 text-slate-400 hover:text-white" aria-label="Close phone window" @click="showPhone = false">
+            &times;
+          </button>
+          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+          <p class="mt-4 text-center text-3xl font-bold drip-text">(541) 501-0698</p>
+          <p class="mt-2 text-center text-sm text-slate-400">
+            Mention "{{ activePackage }}" so we can prep the right tools.
+          </p>
+          <div class="mt-6 flex flex-col gap-3">
+            <button type="button" class="btn-primary justify-center" @click="copyPhone">Copy Number</button>
+            <a href="tel:+15415010698" class="btn-outline justify-center">Call Now</a>
+          </div>
+          <p v-if="copied" class="mt-3 text-center text-xs text-green-400">Phone number copied!</p>
+        </div>
+      </div>
+    </Teleport>
   </main>
 </template>
 
 <script setup lang="ts">
+const showPhone = ref(false)
+const activePackage = ref<string | null>(null)
+const copied = ref(false)
+
+const openPhone = (title: string) => {
+  activePackage.value = title
+  showPhone.value = true
+}
+
+const copyPhone = async () => {
+  try {
+    await navigator.clipboard.writeText('(541) 501-0698')
+    copied.value = true
+    setTimeout(() => (copied.value = false), 2000)
+  } catch {
+    copied.value = false
+  }
+}
+
 const packages = [
   {
     tier: 'Full Service',

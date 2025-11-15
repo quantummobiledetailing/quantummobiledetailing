@@ -14,9 +14,9 @@ export default <Partial<Config>>{
     extend: {
       colors: {
         brand: {
-          primary: '#38bdf8',
-          secondary: '#a855f7',
-          accent: '#f97316',
+          primary: '#ef4444',
+          secondary: '#fb7185',
+          accent: '#fecaca',
         },
       },
       fontFamily: {

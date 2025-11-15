@@ -7,18 +7,24 @@
         Quantum Mobile Detailing is a Saint Helens, Oregon business born from keeping friends’ rides clean between coastal road trips. Today the same boutique approach serves neighbors across Columbia County and the Northwest river towns.
       </p>
     </section>
-
-    <section class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
-      <article class="glow-card rounded-3xl p-6">
-        <h2 class="text-2xl font-semibold text-white">People-first philosophy</h2>
-        <p class="mt-3 text-sm text-slate-300">
-          Every service begins with a listening session. We map how you use, store, and maintain the vehicle to create a plan that balances longevity and budget. Expect honest recommendations, paint readings, and transparent quotes.
-        </p>
-        <ul class="mt-6 space-y-3 text-sm text-slate-200">
-          <li>- Licensed & insured technicians</li>
-          <li>- Ongoing training in paint correction & coatings</li>
-          <li>- Concierge scheduling for riverfront homes, fleets, and clubs</li>
-        </ul>
+\r\n    <section class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[2.5fr_1.5fr]">
+      <article class="glow-card rounded-3xl p-0 lg:flex lg:items-center">
+        <div class="shrink-0 p-6 lg:w-1/2">
+          <div class="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+            <img src="/images/owner.jpg" alt="Ryan, owner of Quantum Mobile Detailing" class="h-full w-full object-cover" />
+          </div>
+        </div>
+        <div class="p-6 lg:w-1/2">
+          <h2 class="text-2xl font-semibold text-white">People-first philosophy</h2>
+          <p class="mt-3 text-sm text-slate-300">
+            Every service begins with a listening session and a genuine love for cars�especially Subarus. The Quantum logo even nods to my WRX STI outline. I turned my DIY obsession for keeping my 2019 STI pristine into a profession, so your vehicle gets the same care.
+          </p>
+          <ul class="mt-6 space-y-3 text-sm text-slate-200">
+            <li>- Ongoing training in paint correction & coatings</li>
+            <li>- Concierge scheduling for riverfront homes, fleets, and clubs</li>
+            <li>- Owner-operated with a detailer�s heart for Subaru culture</li>
+          </ul>
+        </div>
       </article>
 
       <article class="glow-card rounded-3xl p-6">
@@ -28,12 +34,12 @@
         </p>
         <div class="mt-6 grid grid-cols-2 gap-4 text-xs uppercase tracking-[0.4em] text-slate-400">
           <div>
-            <p class="text-3xl font-semibold text-white">350+</p>
+            <p class="text-3xl font-semibold text-white">50+</p>
             <p>Correction Hours</p>
           </div>
           <div>
-            <p class="text-3xl font-semibold text-white">5</p>
-            <p>Mobile Units</p>
+            <p class="text-3xl font-semibold text-white">1</p>
+            <p>Mobile Unit</p>
           </div>
         </div>
       </article>
@@ -54,12 +60,8 @@
         Email <a class="text-brand-primary underline" href="mailto:quantummobiledetailingllc@gmail.com">quantummobiledetailingllc@gmail.com</a> or call (541) 501-0698 to grab a slot on this week’s schedule.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-4">
-        <NuxtLink to="/booking" class="rounded-full bg-brand-primary px-8 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-950">
-          Book Consultation
-        </NuxtLink>
-        <NuxtLink to="/services" class="rounded-full border border-brand-primary px-8 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-brand-primary">
-          Explore Services
-        </NuxtLink>
+        <a href="tel:+15415010698" class="btn-primary">Call For Consultation</a>
+        <NuxtLink to="/services" class="btn-outline">Explore Services</NuxtLink>
       </div>
     </section>
   </main>
@@ -79,8 +81,20 @@ const pillars = [
   },
   {
     category: 'Care',
-    title: 'Sustainable & safe',
-    copy: 'Biodegradable soaps, water reclamation mats, and towel tracking protect the Columbia River and your finish.',
+    title: 'Quantum-level clean',
+    copy: 'Physics nerd alert: we dial in details down to the “quantum” level—meticulous processes, calibrated lighting, and pro-grade chemistry borrowed from my Intel performance lab days.',
   },
 ]
 </script>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,55 +1,26 @@
 <template>
   <main class="space-y-16 px-6 py-16 sm:px-10">
     <section class="mx-auto max-w-4xl space-y-4 text-center">
-      <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Book Now</p>
-      <h1 class="text-4xl font-semibold text-white">Reserve your mobile detailing experience.</h1>
+      <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Booking Offline</p>
+      <h1 class="text-4xl font-semibold text-white">Online booking is temporarily paused.</h1>
       <p class="text-lg text-slate-300">
-        Complete the form and our concierge will confirm availability within 24 hours. Prefer to chat? Call or text (541) 501-0698.
+        Please call or text <a class="text-brand-primary" href="tel:+15415010698">(541) 501-0698</a> or email
+        <a class="text-brand-primary" href="mailto:quantummobiledetailingllc@gmail.com">quantummobiledetailingllc@gmail.com</a> to reserve your slot.
       </p>
     </section>
 
     <section class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
-      <form class="glow-card rounded-3xl p-6 text-sm text-slate-100" @submit.prevent>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <label class="space-y-2">
-            <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Name</span>
-            <input class="w-full rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3" type="text" placeholder="Jane Doe" />
-          </label>
-          <label class="space-y-2">
-            <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Email</span>
-            <input class="w-full rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3" type="email" placeholder="you@email.com" />
-          </label>
-          <label class="space-y-2">
-            <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Phone</span>
-            <input class="w-full rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3" type="tel" placeholder="(541) 501-0698" />
-          </label>
-          <label class="space-y-2">
-            <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Preferred Date</span>
-            <input class="w-full rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3" type="date" />
-          </label>
+      <article class="glow-card rounded-3xl p-6 text-center text-slate-200">
+        <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Need Detailing?</p>
+        <h2 class="mt-3 text-2xl font-semibold text-white">We're taking bookings manually.</h2>
+        <p class="mt-4 text-sm text-slate-300">
+          Share your make, model, and goals and we’ll reply with availability plus a quote. Expect a same-day response.
+        </p>
+        <div class="mt-6 space-y-3 text-sm font-semibold text-brand-accent">
+          <a href="tel:+15415010698" class="btn-primary w-full justify-center">Call/Text (541) 501-0698</a>
+          <a href="mailto:quantummobiledetailingllc@gmail.com" class="btn-outline w-full justify-center">Email quantum mobile detailing</a>
         </div>
-        <label class="mt-4 block space-y-2">
-          <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Vehicle + Notes</span>
-          <textarea class="min-h-[140px] w-full rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3" placeholder="Year, make, model, current condition, goals..."></textarea>
-        </label>
-        <label class="mt-4 block space-y-2">
-          <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Service Type</span>
-          <select class="w-full rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3">
-            <option>Interior & Exterior Detail</option>
-            <option>Exterior Detail Only</option>
-            <option>Interior Detail Only</option>
-            <option>Paint Enhancement</option>
-            <option>Paint Correction (1-Step)</option>
-            <option>Paint Correction (2-Step)</option>
-            <option>Ceramic Coating</option>
-            <option>Custom / Fleet</option>
-          </select>
-        </label>
-        <button type="submit" class="mt-6 w-full rounded-full bg-brand-primary px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-950">
-          Submit Request
-        </button>
-      </form>
-
+      </article>
       <div class="space-y-6">
         <article class="glow-card rounded-3xl p-6">
           <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Response Time</p>

@@ -1,25 +1,18 @@
 <template>
   <main class="space-y-16 pb-16">
     <section class="relative overflow-hidden px-6 py-20 sm:px-10">
-      <div class="absolute inset-0 -z-10 opacity-60">
-        <div class="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-brand-primary/50 to-transparent blur-3xl"></div>
-      </div>
       <div class="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
         <div class="space-y-6 text-center lg:text-left">
           <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens • Oregon Northwest</p>
           <h1 class="text-4xl font-semibold leading-tight text-white sm:text-5xl">
-            Mobile detailing tuned for rainy seasons and PNW roads
+            Mobile Detailing with Quantum Level Precision
           </h1>
           <p class="text-lg text-slate-300">
-            We bring filtered water, soft lighting, and climate-ready canopies so Columbia County drivers can enjoy a showroom finish without leaving home.
+            Offering the ultimate convenience in NW Oregon, we come to you! Interior/exterior detailing and paint correction. We carry premium products such as P&S liquids, The Rag Company towels, and every tool needed to get the job done. Call now and let's get your baby cleaned!
           </p>
           <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
-            <NuxtLink to="/booking" class="rounded-full bg-brand-primary px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-slate-950">
-              Reserve A Detail
-            </NuxtLink>
-            <NuxtLink to="/services" class="rounded-full border border-white/20 px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white hover:border-brand-primary hover:text-brand-primary">
-              View Services
-            </NuxtLink>
+            <button type="button" @click="showPhone = true" class="btn-primary">Call Or Text</button>
+            <NuxtLink to="/services" class="btn-outline">View Services</NuxtLink>
           </div>
         </div>
         <div class="grid flex-1 grid-cols-2 gap-4 text-center text-sm uppercase tracking-widest text-slate-300">
@@ -61,9 +54,9 @@
             <ul class="mt-4 space-y-2 text-sm text-slate-200">
               <li v-for="perk in service.perks" :key="perk">- {{ perk }}</li>
             </ul>
-            <NuxtLink to="/booking" class="mt-6 inline-flex justify-center rounded-full border border-brand-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-brand-primary hover:bg-brand-primary hover:text-slate-950">
-              Book Package
-            </NuxtLink>
+            <a href="tel:+15415010698" class="mt-6 inline-flex justify-center rounded-full border border-brand-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-brand-accent hover:bg-brand-primary hover:text-black">
+              Call To Book
+            </a>
           </article>
         </div>
       </div>
@@ -89,16 +82,51 @@
               Fully mobile setup with purified water, onboard power, and covered work zones keeps results consistent through coastal rain, pine pollen, and chilly mornings.
             </p>
           </div>
-          <NuxtLink to="/booking" class="mt-6 inline-flex justify-center rounded-full bg-brand-primary px-4 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-950">
-            Schedule A Route Stop
-          </NuxtLink>
+          <a href="tel:+15415010698" class="mt-6 btn-primary">Schedule A Route Stop</a>
         </article>
       </div>
     </section>
+    <Teleport to="body">
+      <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
+        <div class="relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
+          <button
+            class="absolute right-4 top-4 text-slate-400 hover:text-white"
+            @click="showPhone = false"
+            aria-label="Close phone window"
+          >
+            &times;
+          </button>
+          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+          <p class="mt-4 text-center text-3xl font-bold text-white drip-text">
+            (541) 501-0698
+          </p>
+          <p class="mt-2 text-center text-sm text-slate-400">Tap the number to copy or call from your phone.</p>
+          <div class="mt-6 flex flex-col gap-3">
+            <button class="btn-primary justify-center" type="button" @click="copyPhone">
+              Copy Number
+            </button>
+            <a href="tel:+15415010698" class="btn-outline justify-center">Call Now</a>
+          </div>
+          <p v-if="copied" class="mt-3 text-center text-xs text-green-400">Phone number copied!</p>
+        </div>
+      </div>
+    </Teleport>
   </main>
 </template>
 
 <script setup lang="ts">
+const showPhone = ref(false)
+const copied = ref(false)
+
+const copyPhone = async () => {
+  try {
+    await navigator.clipboard.writeText('(541) 501-0698')
+    copied.value = true
+    setTimeout(() => (copied.value = false), 2000)
+  } catch (err) {
+    copied.value = false
+  }
+}
 const heroStats = [
   { value: '250+', label: 'Local Vehicles Detailed' },
   { value: '12', label: 'Years Detailing Experience' },
@@ -110,17 +138,17 @@ const features = [
   {
     title: 'PNW Prepared',
     description: 'Filtered water, heated extractors, and dry canopies keep details on schedule through every season.',
-    icon: '01',
+    icon: '🚗',
   },
   {
     title: 'Transparent Consultations',
     description: 'We inspect paint, trim, and interiors together before recommending a plan.',
-    icon: '02',
+    icon: '📋',
   },
   {
     title: 'Aftercare Support',
     description: 'Maintenance reminders and wash tips designed for wet Oregon roads.',
-    icon: '03',
+    icon: '💧',
   },
 ]
 
@@ -142,7 +170,7 @@ const services = [
   {
     tier: 'Correction & Coating',
     title: 'Ceramic Upgrade',
-    price: 'From $550',
+    price: '$650+',
     description: 'One to two-step correction with ceramic or graphene coating.',
     perks: ['Machine correction stages', 'Wheel and glass coating options', '2-6 year protection', 'Aftercare kit + support'],
   },
