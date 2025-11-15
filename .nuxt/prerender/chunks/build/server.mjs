@@ -1191,10 +1191,10 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(` Quantum<span class="text-brand-primary"${_scopeId}>Detailing</span>`);
+            _push2(` Quantum Mobile <span class="text-brand-primary"${_scopeId}>Detailing</span>`);
           } else {
             return [
-              createTextVNode(" Quantum"),
+              createTextVNode(" Quantum Mobile "),
               createVNode("span", { class: "text-brand-primary" }, "Detailing")
             ];
           }
