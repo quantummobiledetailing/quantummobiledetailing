@@ -1,13 +1,14 @@
-﻿<template>
+<template>
   <main class="space-y-16 px-6 py-16 sm:px-10">
     <section class="mx-auto max-w-5xl space-y-6 text-center">
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Our Story</p>
       <h1 class="text-4xl font-semibold text-white sm:text-5xl">Crafting a detailing experience built on trust.</h1>
       <p class="text-lg text-slate-300">
-      <p class="text-lg text-slate-300">
         Quantum Mobile Detailing is a Saint Helens, Oregon business born from keeping friends’ rides clean between coastal road trips. Today the same boutique approach serves neighbors across Columbia County and the Northwest river towns.
       </p>
-\r\n    <section class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[2.5fr_1.5fr]">
+    </section>
+
+    <section class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[2.5fr_1.5fr]">
       <article class="glow-card rounded-3xl p-0 lg:flex lg:items-center">
         <div class="shrink-0 p-6 lg:w-1/2">
           <div class="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
@@ -49,7 +50,7 @@
       <article v-for="pillar in pillars" :key="pillar.title" class="glow-card rounded-3xl p-6">
         <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">{{ pillar.category }}</p>
         <h3 class="mt-3 text-xl font-semibold text-white">{{ pillar.title }}</h3>
-        <p class="mt-2 text-sm text-slate-300">{{ pillar.copy }}</p>
+        <p class="mt-2 text-sm text-slate-300" v-html="pillar.copy"></p>
       </article>
     </section>
 
@@ -57,7 +58,7 @@
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Join The Route</p>
       <h2 class="mt-3 text-3xl font-semibold text-white">Ready for the Quantum experience?</h2>
       <p class="mt-3 text-sm text-slate-300">
-        Email <a class="text-brand-primary underline" href="mailto:quantummobiledetailingllc@gmail.com">quantummobiledetailingllc@gmail.com</a> or call (541) 501-0698 to grab a slot on this weekâ€™s schedule.
+        Email <a class="text-brand-primary underline" href="mailto:quantummobiledetailingllc@gmail.com">quantummobiledetailingllc@gmail.com</a> or call (541) 501-0698 to grab a slot on this week’s schedule.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-4">
         <a href="tel:+15415010698" class="btn-primary">Call For Consultation</a>
@@ -86,35 +87,3 @@ const pillars = [
   },
 ]
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
