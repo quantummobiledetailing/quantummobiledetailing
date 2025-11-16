@@ -1,10 +1,10 @@
-<template>
+﻿<template>
   <main class="space-y-16 px-6 py-16 sm:px-10">
     <section class="mx-auto max-w-5xl space-y-4 text-center">
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Services</p>
       <h1 class="text-4xl font-semibold text-white">Tailored detailing programs for every finish.</h1>
       <p class="text-lg text-slate-300">
-        Choose from curated packages or build a bespoke plan with our specialists. Pricing reflects most coupes and sedans—final quotes follow inspection.
+        Choose from curated packages or build a bespoke plan with our specialists. Pricing reflects most coupes and sedansâ€”final quotes follow inspection.
       </p>
     </section>
 
@@ -95,57 +95,93 @@ const packages = [
     tier: 'Full Service',
     title: 'Interior & Exterior Detail',
     price: '$250',
-    duration: '4 – 4.5 hrs',
+    duration: '4 â€“ 4.5 hrs',
     summary: 'Our most popular Saint Helens package for reviving daily drivers inside and out.',
-    features: ['Foam bath, clay, and hand wash', 'Wheel + tire deep clean', 'Interior vacuum, plastics, and glass', 'Dash + seats dressed with UV protection'],
+    features: [
+      'Two-step wash with no-touch pre-rinse and hand dry',
+      'Surface clay treatment removes contaminants',
+      'Wheel, tire, and trim deep clean with dressing',
+      'Declutter, vacuum, plastics/leather care, glass',
+      'Paint sealant for 6-month protection',
+    ],
   },
   {
     tier: 'Exterior Only',
     title: 'Exterior Detail',
     price: '$130',
-    duration: '1.5 – 2 hrs',
+    duration: '1.5 â€“ 2 hrs',
     summary: 'Focused exterior refresh that removes Oregon road film and protects against rain.',
-    features: ['Touchless pre-rinse + contact wash', 'Bug and sap removal', 'Tire dressing & trim rejuvenation', 'Spray sealant for short-term protection'],
+    features: [
+      'No-touch wash + meticulous hand wash and towel dry',
+      'Surface clay treatment + contaminant removal',
+      'Wheel, tire, and trim cleaning with dressing',
+      '6-month synthetic sealant for shine and durability',
+    ],
   },
   {
     tier: 'Interior Only',
     title: 'Interior Detail',
     price: '$160',
-    duration: '2 – 2.5 hrs',
+    duration: '2 â€“ 2.5 hrs',
     summary: 'Deep interior cleanse ideal after road trips, pets, or wet-weather commutes.',
-    features: ['Steam sanitation of touch points', 'Seat, carpet, and mat shampoo', 'Leather clean + moisturize', 'Odor-neutral finishing spray'],
+    features: [
+      'Declutter, trash removal, and full vacuum',
+      'Floor mat care, carpet brushing, pedal cleaning',
+      'Dash, vents, plastics, leather, headliner spot treatment',
+      'Glass cleaning and final scent',
+    ],
   },
   {
     tier: 'Gloss Boost',
     title: 'Paint Enhancement',
     price: '$350',
-    duration: '4.5 – 5 hrs',
+    duration: '4.5 â€“ 5 hrs',
     summary: 'Single-stage polish to brighten dull paint before the next rainy season.',
-    features: ['Iron decontamination', 'Machine polish to remove light swirls', 'Trim restoration', 'Sealant for up to 6 months of gloss'],
+    features: [
+      'Exterior detail with two-step wash + towel dry',
+      'Surface clay treatment to remove bonded contaminants',
+      'Single-stage finish polish to remove light swirls',
+      'Trim revival and 6-month sealant',
+    ],
   },
   {
     tier: 'Correction',
     title: 'Paint Correction (1-Step)',
     price: '$550',
-    duration: '6 – 6.5 hrs',
+    duration: '6 â€“ 6.5 hrs',
     summary: 'Ideal for moderate defects on daily drivers that need a serious refresh.',
-    features: ['Paint readings + masking', 'Cut/polish combo pass', 'Interior express service', 'Ceramic sealant upgrade available'],
+    features: [
+      'Exterior detail plus cutting and finish polish stages',
+      'Removes swirls & minor clear-coat scratches',
+      'Includes touch-up of interior surfaces',
+      'Ready for sealant or coating add-ons',
+    ],
   },
   {
     tier: 'Correction',
     title: 'Paint Correction (2-Step)',
     price: '$750',
-    duration: '7.5 – 8.5 hrs',
+    duration: '7.5 â€“ 8.5 hrs',
     summary: 'For darker finishes or vehicles requiring heavier correction before coating.',
-    features: ['Compounding + finishing stages', 'Panel wipe + inspection', 'Wheel faces cleaned and prepped', 'Includes silica sealant'],
+    features: [
+      'Exterior detail + deep cut, cutting, and finish polish',
+      'Corrects deep swirls and prepares for coating',
+      'Panel wipe and inspection before protection',
+      'Includes paint sealant or coating prep',
+    ],
   },
   {
     tier: 'Coating',
     title: 'Ceramic Coating',
-    price: '+$1150',
-    duration: '7 – 7.5 hrs',
-    summary: 'Durable ceramic upgrade applied after correction to lock in gloss for years.',
-    features: ['2-6 year ceramic or graphene system', 'Wheel and glass coating add-ons', 'Cure monitoring + aftercare kit', 'Annual inspection reminders'],
+    price: '$1000',
+    duration: '8.5 - 10 hrs',
+    summary: 'Three-year ceramic coating applied after correction to lock in gloss.',
+    features: [
+      'Exterior detail plus two-step correction',
+      '3-year ceramic coating on paint',
+      'Wheel + glass coating add-ons',
+      'Aftercare kit and cure monitoring guidance',
+    ],
   },
 ]
 
@@ -156,3 +192,12 @@ const addOns = [
   { title: 'Fleet Maintenance', description: 'Custom pricing for local businesses or boat tow rigs.', price: 'Contact' },
 ]
 </script>
+
+
+
+
+
+
+
+
+
