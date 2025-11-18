@@ -3,6 +3,9 @@
     <section class="relative overflow-hidden px-6 py-20 sm:px-10">
       <div class="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
         <div class="space-y-6 text-center lg:text-left">
+          <div class="flex justify-center">
+            <img src="/images/logo-watermark.png" alt="Quantum Mobile Detailing logo" class="h-64 w-auto max-w-sm sm:max-w-md" />
+          </div>
           <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens • Oregon Northwest</p>
           <h1 class="text-4xl font-semibold leading-tight text-white sm:text-5xl">
             Mobile Detailing with Quantum Level Precision
@@ -15,10 +18,10 @@
             <NuxtLink to="/services" class="btn-outline">View Services</NuxtLink>
           </div>
         </div>
-        <div class="grid flex-1 grid-cols-2 gap-4 text-center text-sm uppercase tracking-widest text-slate-300">
-          <div v-for="stat in heroStats" :key="stat.label" class="glow-card rounded-3xl px-6 py-8">
-            <p class="text-4xl font-semibold text-white">{{ stat.value }}</p>
-            <p class="mt-2 text-xs text-slate-400">{{ stat.label }}</p>
+        <div class="grid flex-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div v-for="stat in heroStats" :key="stat.label" class="glow-card rounded-3xl px-6 py-6 text-left">
+            <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">{{ stat.label }}</p>
+            <p class="mt-3 text-3xl font-semibold text-white sm:text-4xl">{{ stat.value }}</p>
           </div>
         </div>
       </div>
@@ -47,7 +50,10 @@
           <article v-for="service in services" :key="service.tier" class="glow-card flex flex-col rounded-3xl p-6">
             <div class="flex items-center justify-between">
               <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ service.tier }}</span>
-              <span class="text-lg font-semibold text-white">{{ service.price }}</span>
+              <div class="text-right">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
+                <p class="text-lg font-semibold text-white">{{ service.price }}+</p>
+              </div>
             </div>
             <h3 class="mt-4 text-2xl font-semibold text-white">{{ service.title }}</h3>
             <p class="mt-2 text-sm text-slate-300">{{ service.description }}</p>
@@ -67,22 +73,22 @@
         <article class="glow-card rounded-3xl p-6">
           <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">Testimonials</p>
           <h3 class="mt-3 text-2xl font-semibold text-white">Clients trust us with their daily drivers and collectibles.</h3>
-          <div class="mt-6 space-y-6">
+          <div class="mt-6 max-h-72 space-y-6 overflow-y-auto pr-2">
             <figure v-for="testimonial in testimonials" :key="testimonial.name" class="border-l border-brand-primary/40 pl-4">
               <blockquote class="text-sm text-slate-300">"{{ testimonial.quote }}"</blockquote>
               <figcaption class="mt-2 text-xs font-semibold uppercase tracking-[0.3em] text-white">{{ testimonial.name }}</figcaption>
             </figure>
           </div>
         </article>
-        <article class="glow-card flex flex-col justify-between rounded-3xl p-6">
-          <div>
-            <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">Coverage Area</p>
-            <h3 class="mt-3 text-2xl font-semibold text-white">Proudly serving Saint Helens, Scappoose, Rainier, and the greater Oregon Northwest.</h3>
-            <p class="mt-3 text-sm text-slate-300">
-              Fully mobile setup with purified water, onboard power, and covered work zones keeps results consistent through coastal rain, pine pollen, and chilly mornings.
-            </p>
-          </div>
-          <a href="tel:+15415010698" class="mt-6 btn-primary">Schedule A Route Stop</a>
+        <article class="glow-card rounded-3xl p-6">
+          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">Coverage Area</p>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Proudly serving Saint Helens, Scappoose, Rainier, and the greater Oregon Northwest.</h3>
+          <p class="mt-3 text-sm text-slate-300">
+            We bring the tools, set up canopies, and tap into your available water and electrical outlets so detailing stays on schedule through rain, pollen, and chilly mornings.
+          </p>
+          <p class="mt-3 text-sm text-slate-300">
+            Columbia County routes keep travel fees minimal, but we routinely head into Portland, Vancouver, and coastal towns when we negotiate fair trip pricing during your estimate.
+          </p>
         </article>
       </div>
     </section>
@@ -128,8 +134,8 @@ const copyPhone = async () => {
   }
 }
 const heroStats = [
-  { value: '250+', label: 'Local Vehicles Detailed' },
-  { value: '12', label: 'Years Detailing Experience' },
+  { value: '50+', label: 'Local Vehicles Detailed' },
+  { value: '7', label: 'Years Detailing Experience' },
   { value: '4-8 hrs', label: 'On-Site Sessions' },
   { value: '24 hr', label: 'Response Time' },
 ]
@@ -137,17 +143,17 @@ const heroStats = [
 const features = [
   {
     title: 'PNW Prepared',
-    description: 'Filtered water, heated extractors, and dry canopies keep details on schedule through every season.',
+    description: 'Pop-up canopies, flexible setups, and on-site hookups let us work rain or shine wherever there\'s water and power.',
     icon: '🚗',
   },
   {
     title: 'Transparent Consultations',
-    description: 'We inspect paint, trim, and interiors together before recommending a plan.',
+    description: 'Full-vehicle inspections cover paint, wheels, and interiors so every plan is client-specific and negotiable to your goals.',
     icon: '📋',
   },
   {
     title: 'Aftercare Support',
-    description: 'Maintenance reminders and wash tips designed for wet Oregon roads.',
+    description: 'Maintenance reminders, wash tips, and a monthly program that cuts detail pricing in half for loyal clients.',
     icon: '💧',
   },
 ]
@@ -170,14 +176,37 @@ const services = [
   {
     tier: 'Correction & Coating',
     title: 'Ceramic Upgrade',
-    price: '$650+',
+    price: '$650',
     description: 'One to two-step correction with ceramic or graphene coating.',
     perks: ['Machine correction stages', 'Wheel and glass coating options', '2-6 year protection', 'Aftercare kit + support'],
   },
 ]
 
 const testimonials = [
-  { name: 'Kara M.', quote: 'Ryan keeps our family SUVs spotless even after muddy weekend trips. The shine lasts for months.' },
-  { name: 'Nathan R.', quote: 'He corrected the paint on my classic Nova and protected it before the Portland rains moved in.' },
+  { name: 'Cody', quote: 'The paint enhancement makes my car look amazing. Thank you so much.' },
+  {
+    name: 'Eric Farrell',
+    quote: 'I couldn’t be happier with Ryan’s work! He’s professional, detail-oriented, and clearly takes pride in what he does. If you’re looking for a trustworthy local car detailer, this is the place to go.',
+  },
+  {
+    name: 'Austen Tanner',
+    quote: 'Ryan was on time, stayed over four hours on my non-crew cab truck, and had me walk around to point out anything I thought needed attention. Totally impressed and will definitely use this service again.',
+  },
+  {
+    name: 'Mark Snider',
+    quote: 'My RAV4 is like brand new! Ryan really knows his stuff and is a pleasure to be around. Thank you!',
+  },
+  {
+    name: 'Dan Jocoy',
+    quote: 'Ryan did the interior of my 2015 Honda Sport and showed up with every tool for a quality job. The cabin looks better than when I bought it.',
+  },
+  {
+    name: 'Jonathan Hunter',
+    quote: 'Ryan and his team did an amazing job—my car looks brand new!',
+  },
+  {
+    name: 'Trace Ericksen',
+    quote: 'Excellent work and quality. I was extremely satisfied and will be back for ongoing services. Thanks!',
+  },
 ]
 </script>

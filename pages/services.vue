@@ -10,9 +10,12 @@
 
     <section class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
       <article v-for="servicePackage in packages" :key="servicePackage.title" class="glow-card flex flex-col rounded-3xl p-6">
-        <div class="flex items-baseline justify-between">
+        <div class="flex items-start justify-between gap-4">
           <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ servicePackage.tier }}</span>
-          <span class="text-2xl font-semibold text-white">{{ servicePackage.price }}</span>
+          <div class="text-right">
+            <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
+            <p class="text-2xl font-semibold text-white">{{ servicePackage.price }}+</p>
+          </div>
         </div>
         <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Time: {{ servicePackage.duration }}</p>
         <h2 class="mt-4 text-2xl font-semibold text-white">{{ servicePackage.title }}</h2>
@@ -95,7 +98,7 @@ const packages = [
     tier: 'Full Service',
     title: 'Interior & Exterior Detail',
     price: '$250',
-    duration: '4 â€“ 4.5 hrs',
+    duration: '4 - 4.5 hrs',
     summary: 'Our most popular Saint Helens package for reviving daily drivers inside and out.',
     features: [
       'Two-step wash with no-touch pre-rinse and hand dry',
@@ -109,7 +112,7 @@ const packages = [
     tier: 'Exterior Only',
     title: 'Exterior Detail',
     price: '$130',
-    duration: '1.5 â€“ 2 hrs',
+    duration: '1.5 - 2 hrs',
     summary: 'Focused exterior refresh that removes Oregon road film and protects against rain.',
     features: [
       'No-touch wash + meticulous hand wash and towel dry',
@@ -122,7 +125,7 @@ const packages = [
     tier: 'Interior Only',
     title: 'Interior Detail',
     price: '$160',
-    duration: '2 â€“ 2.5 hrs',
+    duration: '2 - 2.5 hrs',
     summary: 'Deep interior cleanse ideal after road trips, pets, or wet-weather commutes.',
     features: [
       'Declutter, trash removal, and full vacuum',
@@ -135,7 +138,7 @@ const packages = [
     tier: 'Gloss Boost',
     title: 'Paint Enhancement',
     price: '$350',
-    duration: '4.5 â€“ 5 hrs',
+    duration: '4.5 - 5 hrs',
     summary: 'Single-stage polish to brighten dull paint before the next rainy season.',
     features: [
       'Exterior detail with two-step wash + towel dry',
@@ -148,7 +151,7 @@ const packages = [
     tier: 'Correction',
     title: 'Paint Correction (1-Step)',
     price: '$550',
-    duration: '6 â€“ 6.5 hrs',
+    duration: '6 - 6.5 hrs',
     summary: 'Ideal for moderate defects on daily drivers that need a serious refresh.',
     features: [
       'Exterior detail plus cutting and finish polish stages',
@@ -161,7 +164,7 @@ const packages = [
     tier: 'Correction',
     title: 'Paint Correction (2-Step)',
     price: '$750',
-    duration: '7.5 â€“ 8.5 hrs',
+    duration: '7.5 - 8.5 hrs',
     summary: 'For darker finishes or vehicles requiring heavier correction before coating.',
     features: [
       'Exterior detail + deep cut, cutting, and finish polish',

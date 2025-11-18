@@ -1,20 +1,21 @@
 <template>
-  <div class="min-h-screen bg-slate-950 text-slate-100">
-    <header class="sticky top-0 z-20 border-b border-white/10 bg-black/85 backdrop-blur">
+  <div class="min-h-screen bg-black text-slate-100">
+    <header class="sticky top-0 z-20 border-b border-white/10 bg-gradient-to-r from-red-600 via-yellow-300 to-black">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
         <NuxtLink to="/" class="text-2xl font-semibold tracking-wide">
-          <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">Quantum</span>
-          <span class="text-brand-primary"> Mobile </span>
-          <span class="bg-gradient-to-r from-brand-primary via-red-200 to-white bg-clip-text text-transparent">Detailing</span>
+          <span class="text-yellow-300">Q</span>
+          <span class="text-white">uantum Mobile Detailing</span>
         </NuxtLink>
-        <nav class="flex flex-wrap gap-4 text-sm font-semibold text-brand-accent">
-          <NuxtLink v-for="item in navLinks" :key="item.to" :to="item.to" class="tracking-wide hover:text-brand-primary">
+        <nav class="flex flex-nowrap items-center gap-3 overflow-x-auto text-xs font-semibold text-brand-accent sm:text-sm">
+          <NuxtLink
+            v-for="item in navLinks"
+            :key="item.to"
+            :to="item.to"
+            class="whitespace-nowrap tracking-wide hover:text-brand-primary"
+          >
             {{ item.label }}
           </NuxtLink>
         </nav>
-        <button class="hidden btn-outline md:inline-flex opacity-50 cursor-not-allowed" title="Online booking coming soon">
-          Booking Offline
-        </button>
       </div>
     </header>
     <NuxtPage />

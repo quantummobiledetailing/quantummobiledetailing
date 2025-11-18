@@ -11,7 +11,6 @@
         <div class="h-48 w-full bg-cover bg-center" :style="{ backgroundImage: `url(${shot.image})` }"></div>
         <div class="p-5">
           <h3 class="text-lg font-semibold text-white">{{ shot.title }}</h3>
-          <p class="mt-2 text-sm text-slate-300">{{ shot.description }}</p>
         </div>
       </article>
     </section>
@@ -31,7 +30,15 @@ const galleryModules = import.meta.glob('@/assets/gallery/*.{jpg,jpeg,png,webp}'
   import: 'default',
 })
 
-const shots = Object.entries(galleryModules).map(([path, src]) => {
+const extractOrder = (filePath: string): number => {
+  const filename = filePath.split('/').pop() ?? ''
+  const match = filename.match(/^\d+/)
+  return match ? Number(match[0]) : Number.MAX_SAFE_INTEGER
+}
+
+const shots = Object.entries(galleryModules)
+  .sort(([pathA], [pathB]) => extractOrder(pathA) - extractOrder(pathB))
+  .map(([path, src]) => {
   const filename = path.split('/').pop() ?? 'Gallery Image'
   const baseName = filename.replace(/\.[^/.]+$/, '')
   const prettyTitle = baseName
@@ -40,7 +47,6 @@ const shots = Object.entries(galleryModules).map(([path, src]) => {
 
   return {
     title: prettyTitle,
-    description: 'Captured on-site across Saint Helens and the Oregon Northwest.',
     image: src as string,
   }
 })
