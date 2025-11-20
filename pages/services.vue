@@ -8,36 +8,59 @@
       </p>
     </section>
 
-    <section class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
-      <article v-for="servicePackage in packages" :key="servicePackage.title" class="glow-card flex h-full flex-col rounded-3xl p-6">
-        <div class="flex items-start justify-between gap-4">
-          <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ servicePackage.tier }}</span>
-          <div class="text-right">
-            <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
-            <p class="text-2xl font-semibold text-white">{{ servicePackage.price }}+</p>
+    <section class="mx-auto max-w-6xl space-y-6">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article v-for="servicePackage in packages" :key="servicePackage.title" class="glow-card flex h-full flex-col rounded-3xl p-6">
+          <div class="flex items-start justify-between gap-4">
+            <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ servicePackage.tier }}</span>
+            <div class="text-right">
+              <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
+              <p class="text-2xl font-semibold text-white">{{ servicePackage.price }}+</p>
+            </div>
           </div>
-        </div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Time: {{ servicePackage.duration }}</p>
-        <h2 class="mt-4 text-2xl font-semibold text-white">{{ servicePackage.title }}</h2>
-        <p class="mt-2 text-sm text-slate-300">{{ servicePackage.summary }}</p>
-        <ul class="mt-4 space-y-2 text-sm text-slate-200">
-          <li v-for="item in servicePackage.features" :key="item">- {{ item }}</li>
-        </ul>
-        <button type="button" class="mt-6 btn-outline text-center" @click="openPhone(servicePackage.title)">
-          Call About {{ servicePackage.title }}
-        </button>
-      </article>
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Time: {{ servicePackage.duration }}</p>
+          <h2 class="mt-4 text-2xl font-semibold text-white">{{ servicePackage.title }}</h2>
+          <p class="mt-2 text-sm text-slate-300">{{ servicePackage.summary }}</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-200">
+            <li v-for="item in servicePackage.features" :key="item">- {{ item }}</li>
+          </ul>
+          <button type="button" class="mt-6 btn-outline text-center" @click="openPhone(servicePackage.title)">
+            Call About {{ servicePackage.title }}
+          </button>
+        </article>
+      </div>
 
-      <article class="glow-card flex h-full flex-col rounded-3xl p-6 sm:col-span-2 lg:col-span-1 lg:col-start-3">
-        <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Add-ons</p>
-        <div class="mt-4 grid gap-4 sm:grid-cols-2">
-          <div v-for="addon in addOns" :key="addon.title" class="rounded-2xl border border-white/10 p-4">
-            <h3 class="text-lg font-semibold text-white">{{ addon.title }}</h3>
-            <p class="text-sm text-slate-300">{{ addon.description }}</p>
-            <p class="mt-3 text-sm font-semibold text-brand-primary">{{ addon.price }}</p>
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article class="glow-card flex h-full flex-col rounded-3xl p-6">
+          <div class="flex items-start justify-between gap-4">
+            <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ ceramicPackage.tier }}</span>
+            <div class="text-right">
+              <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
+              <p class="text-2xl font-semibold text-white">{{ ceramicPackage.price }}+</p>
+            </div>
           </div>
-        </div>
-      </article>
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Time: {{ ceramicPackage.duration }}</p>
+          <h2 class="mt-4 text-2xl font-semibold text-white">{{ ceramicPackage.title }}</h2>
+          <p class="mt-2 text-sm text-slate-300">{{ ceramicPackage.summary }}</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-200">
+            <li v-for="item in ceramicPackage.features" :key="item">- {{ item }}</li>
+          </ul>
+          <button type="button" class="mt-6 btn-outline text-center" @click="openPhone(ceramicPackage.title)">
+            Call About {{ ceramicPackage.title }}
+          </button>
+        </article>
+
+        <article class="glow-card flex h-full flex-col rounded-3xl p-6 lg:col-span-2">
+          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Add-ons</p>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div v-for="addon in addOns" :key="addon.title" class="rounded-2xl border border-white/10 p-4">
+              <h3 class="text-lg font-semibold text-white">{{ addon.title }}</h3>
+              <p class="text-sm text-slate-300">{{ addon.description }}</p>
+              <p class="mt-3 text-sm font-semibold text-brand-primary">{{ addon.price }}</p>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="mx-auto max-w-6xl">
@@ -185,20 +208,21 @@ const packages = [
       'Includes paint sealant or coating prep',
     ],
   },
-  {
-    tier: 'Coating',
-    title: 'Ceramic Coating',
-    price: '$1000',
-    duration: '8.5 - 10 hrs',
-    summary: 'Three-year ceramic coating applied after correction to lock in gloss.',
-    features: [
-      'Exterior detail plus two-step correction',
-      '3-year ceramic coating on paint',
-      'Wheel + glass coating add-ons',
-      'Aftercare kit and cure monitoring guidance',
-    ],
-  },
 ]
+
+const ceramicPackage = {
+  tier: 'Coating',
+  title: 'Ceramic Coating',
+  price: '$1000',
+  duration: '8.5 - 10 hrs',
+  summary: 'Three-year ceramic coating applied after correction to lock in gloss.',
+  features: [
+    'Exterior detail plus two-step correction',
+    '3-year ceramic coating on paint',
+    'Wheel + glass coating add-ons',
+    'Aftercare kit and cure monitoring guidance',
+  ],
+}
 
 const addOns = [
   { title: 'Headlight Restoration', description: 'Wet-sand, polish, and UV seal for fogged lamps.', price: '$100' },

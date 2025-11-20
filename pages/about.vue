@@ -9,13 +9,13 @@
     </section>
 
     <section class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[2.5fr_1.5fr]">
-      <article class="glow-card rounded-3xl p-0 lg:flex lg:items-center">
-        <div class="shrink-0 p-6 lg:w-1/2">
+      <article class="glow-card flex h-full flex-col overflow-hidden rounded-3xl p-0 lg:flex-row lg:items-center">
+        <div class="w-full p-6 lg:w-1/2">
           <div class="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
             <img src="/images/owner.jpg" alt="Ryan, owner of Quantum Mobile Detailing" class="h-full w-full object-cover" />
           </div>
         </div>
-        <div class="p-6 lg:w-1/2">
+        <div class="flex flex-1 flex-col p-6 lg:w-1/2">
           <h2 class="text-2xl font-semibold text-white">People-first philosophy</h2>
           <p class="mt-3 text-sm text-slate-300">
             Every service begins with a listening session and a genuine love for cars—especially Subarus. The Quantum logo even nods to my WRX STI outline. I turned my DIY obsession for keeping my 2019 STI pristine into a profession, so your vehicle gets the same care.
@@ -28,19 +28,24 @@
         </div>
       </article>
 
-      <article class="glow-card rounded-3xl p-6">
-        <h2 class="text-2xl font-semibold text-white">Process driven</h2>
-        <p class="mt-3 text-sm text-slate-300">
-          From pH-balanced chemicals to microfiber-only contact and meticulous pad management, our systems handle pine pollen, road salt, and rainy season grime without introducing new marring.
-        </p>
-        <div class="mt-6 grid grid-cols-2 gap-4 text-xs uppercase tracking-[0.4em] text-slate-400">
-          <div>
-            <p class="text-3xl font-semibold text-white">50+</p>
-            <p>Correction Hours</p>
-          </div>
-          <div>
-            <p class="text-3xl font-semibold text-white">1</p>
-            <p>Mobile Unit</p>
+      <article class="glow-card flex h-full flex-col overflow-hidden rounded-3xl p-0">
+        <div class="relative h-56 w-full overflow-hidden border-b border-white/10 sm:h-64" aria-label="Process driven detailing in action">
+          <img :src="processImage" alt="" class="h-full w-full object-cover" />
+        </div>
+        <div class="flex flex-1 flex-col p-6">
+          <h2 class="text-2xl font-semibold text-white">Process driven</h2>
+          <p class="mt-3 text-sm text-slate-300">
+            From pH-balanced chemicals to microfiber-only contact and meticulous pad management, our systems handle pine pollen, road salt, and rainy season grime without introducing new marring.
+          </p>
+          <div class="mt-6 grid grid-cols-2 gap-4 text-xs uppercase tracking-[0.4em] text-slate-400">
+            <div>
+              <p class="text-3xl font-semibold text-white">50+</p>
+              <p>Correction Hours</p>
+            </div>
+            <div>
+              <p class="text-3xl font-semibold text-white">2</p>
+              <p>Mobile Units</p>
+            </div>
           </div>
         </div>
       </article>
@@ -69,6 +74,8 @@
 </template>
 
 <script setup lang="ts">
+const processImage = new URL('~/assets/images/subaru.jpg', import.meta.url).href
+
 const pillars = [
   {
     category: 'Quality',

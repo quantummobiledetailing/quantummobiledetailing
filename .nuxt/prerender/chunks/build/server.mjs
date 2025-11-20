@@ -400,7 +400,7 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import('./about-CN0kSfj8.mjs')
+    component: () => import('./about-Dt2Z2Wqi.mjs')
   },
   {
     name: "index",
@@ -420,7 +420,7 @@ const _routes = [
   {
     name: "services",
     path: "/services",
-    component: () => import('./services-DiIFr4BY.mjs')
+    component: () => import('./services-CQtkBT1j.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;

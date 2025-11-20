@@ -381,7 +381,7 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import("./_nuxt/about-CN0kSfj8.js")
+    component: () => import("./_nuxt/about-Dt2Z2Wqi.js")
   },
   {
     name: "index",
@@ -401,7 +401,7 @@ const _routes = [
   {
     name: "services",
     path: "/services",
-    component: () => import("./_nuxt/services-DiIFr4BY.js")
+    component: () => import("./_nuxt/services-CQtkBT1j.js")
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
