@@ -30,8 +30,13 @@
     <section class="px-6 sm:px-10">
       <div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
         <article v-for="feature in features" :key="feature.title" class="glow-card rounded-3xl p-6">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl">
-            {{ feature.icon }}
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+            <component
+              :is="feature.icon"
+              class="h-6 w-6 text-brand-primary"
+              aria-hidden="true"
+            />
+            <span class="sr-only">{{ feature.iconLabel }}</span>
           </div>
           <h3 class="text-xl font-semibold text-white">{{ feature.title }}</h3>
           <p class="mt-3 text-sm text-slate-300">{{ feature.description }}</p>
@@ -121,6 +126,10 @@
 </template>
 
 <script setup lang="ts">
+import ClipboardDocumentListIcon from '~/components/icons/ClipboardDocumentListIcon.vue'
+import SparklesIcon from '~/components/icons/SparklesIcon.vue'
+import TruckIcon from '~/components/icons/TruckIcon.vue'
+
 const showPhone = ref(false)
 const copied = ref(false)
 
@@ -144,17 +153,20 @@ const features = [
   {
     title: 'PNW Prepared',
     description: 'Pop-up canopies, flexible setups, and on-site hookups let us work rain or shine wherever there\'s water and power.',
-    icon: '🚗',
+    icon: TruckIcon,
+    iconLabel: 'Truck icon representing a mobile-ready setup',
   },
   {
     title: 'Transparent Consultations',
     description: 'Full-vehicle inspections cover paint, wheels, and interiors so every plan is client-specific and negotiable to your goals.',
-    icon: '📋',
+    icon: ClipboardDocumentListIcon,
+    iconLabel: 'Clipboard icon symbolizing transparent consultations',
   },
   {
     title: 'Aftercare Support',
     description: 'Maintenance reminders, wash tips, and a monthly program that cuts detail pricing in half for loyal clients.',
-    icon: '💧',
+    icon: SparklesIcon,
+    iconLabel: 'Sparkles icon highlighting ongoing aftercare support',
   },
 ]
 

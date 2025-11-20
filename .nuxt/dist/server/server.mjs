@@ -1,4 +1,4 @@
-import { shallowReactive, reactive, effectScope, getCurrentScope, hasInjectionContext, getCurrentInstance, inject, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, defineComponent, h, resolveComponent, computed, provide, ref, Suspense, Fragment, mergeProps, withCtx, createVNode, createTextVNode, toDisplayString, unref, useSSRContext, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, createApp } from "vue";
+import { shallowReactive, reactive, effectScope, getCurrentScope, hasInjectionContext, getCurrentInstance, inject, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, defineComponent, h, resolveComponent, computed, provide, ref, Suspense, Fragment, mergeProps, withCtx, createVNode, unref, createTextVNode, toDisplayString, createBlock, openBlock, useSSRContext, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, createApp } from "vue";
 import { $fetch } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/ofetch/dist/node.mjs";
 import { baseURL } from "#internal/nuxt/paths";
 import { createHooks } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/hookable/dist/index.mjs";
@@ -8,7 +8,7 @@ import { START_LOCATION, createMemoryHistory, createRouter as createRouter$1, Ro
 import { toRouteMatcher, createRouter } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/radix3/dist/index.mjs";
 import { defu } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/defu/dist/defu.mjs";
 import { hasProtocol, joinURL, withQuery, isScriptProtocol, parseQuery, withTrailingSlash, withoutTrailingSlash } from "C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/ufo/dist/index.mjs";
-import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrInterpolate, ssrRenderSuspense, ssrRenderVNode } from "vue/server-renderer";
+import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrRenderList, ssrInterpolate, ssrRenderTeleport, ssrRenderSuspense, ssrRenderVNode } from "vue/server-renderer";
 if (!globalThis.$fetch) {
   globalThis.$fetch = $fetch.create({
     baseURL: baseURL()
@@ -386,7 +386,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-BvcYcx2j.js")
+    component: () => import("./_nuxt/index-CxQnHA9J.js")
   },
   {
     name: "booking",
@@ -401,7 +401,7 @@ const _routes = [
   {
     name: "services",
     path: "/services",
-    component: () => import("./_nuxt/services-D86zCm5w.js")
+    component: () => import("./_nuxt/services-DiIFr4BY.js")
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
@@ -1167,6 +1167,10 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       { label: "About", to: "/about" },
       { label: "Gallery", to: "/gallery" }
     ];
+    const mobileNavOpen = ref(false);
+    const closeMobileNav = () => {
+      mobileNavOpen.value = false;
+    };
     const currentYear = (/* @__PURE__ */ new Date()).getFullYear();
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0;
@@ -1188,7 +1192,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         }),
         _: 1
       }, _parent));
-      _push(`<nav class="flex flex-nowrap items-center gap-3 overflow-x-auto text-xs font-semibold text-brand-accent sm:text-sm"><!--[-->`);
+      _push(`<div class="flex items-center gap-3"><button type="button" class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-lg shadow-black/30 transition hover:border-brand-primary hover:text-brand-primary md:hidden" aria-label="Open navigation menu"${ssrRenderAttr("aria-expanded", unref(mobileNavOpen))}> Menu <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"></path></svg></button><nav class="hidden flex-nowrap items-center gap-3 text-xs font-semibold text-brand-accent sm:text-sm md:flex" aria-label="Primary"><!--[-->`);
       ssrRenderList(navLinks, (item) => {
         _push(ssrRenderComponent(_component_NuxtLink, {
           key: item.to,
@@ -1207,7 +1211,47 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
           _: 2
         }, _parent));
       });
-      _push(`<!--]--></nav></div></header>`);
+      _push(`<!--]--></nav></div></div></header>`);
+      ssrRenderTeleport(_push, (_push2) => {
+        if (unref(mobileNavOpen)) {
+          _push2(`<div class="fixed inset-0 z-40 flex items-start justify-end bg-black/80 backdrop-blur-sm"><div class="m-4 w-full max-w-sm rounded-3xl border border-brand-primary/50 bg-slate-950/95 p-6 shadow-2xl"><div class="flex items-center justify-between"><p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Navigate</p><button type="button" class="rounded-full border border-white/20 p-2 text-slate-300 hover:text-white" aria-label="Close navigation menu"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12"></path></svg></button></div><div class="mt-6 space-y-3"><!--[-->`);
+          ssrRenderList(navLinks, (item) => {
+            _push2(ssrRenderComponent(_component_NuxtLink, {
+              key: item.to,
+              to: item.to,
+              class: "flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white transition hover:border-brand-primary hover:bg-brand-primary/10",
+              onClick: closeMobileNav
+            }, {
+              default: withCtx((_, _push3, _parent2, _scopeId) => {
+                if (_push3) {
+                  _push3(`<span${_scopeId}>${ssrInterpolate(item.label)}</span><svg class="h-4 w-4 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"${_scopeId}><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"${_scopeId}></path></svg>`);
+                } else {
+                  return [
+                    createVNode("span", null, toDisplayString(item.label), 1),
+                    (openBlock(), createBlock("svg", {
+                      class: "h-4 w-4 text-brand-primary",
+                      viewBox: "0 0 24 24",
+                      fill: "none",
+                      stroke: "currentColor",
+                      "stroke-width": "1.5"
+                    }, [
+                      createVNode("path", {
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        d: "M9 5l7 7-7 7"
+                      })
+                    ]))
+                  ];
+                }
+              }),
+              _: 2
+            }, _parent));
+          });
+          _push2(`<!--]--></div><div class="mt-6 rounded-2xl border border-brand-primary/30 bg-brand-primary/10 p-4 text-center text-sm text-slate-300"> Call or text <a href="tel:+15415010698" class="font-semibold text-white hover:text-brand-primary">(541) 501-0698</a> to book. </div></div></div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+      }, "body", false, _parent);
       _push(ssrRenderComponent(_component_NuxtPage, null, null, _parent));
       _push(`<footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10"><div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>Serving Saint Helens &amp; the Oregon Northwest • © ${ssrInterpolate(unref(currentYear))} Quantum Mobile Detailing</p><div class="flex gap-4 text-slate-500"><a href="mailto:quantummobiledetailingllc@gmail.com" class="hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a><a href="tel:+15415010698" class="hover:text-brand-primary">(541) 501-0698</a></div></div></footer></div>`);
     };
@@ -1240,8 +1284,8 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import("./_nuxt/error-404-sD9Hjkcf.js"));
-    const _Error = defineAsyncComponent(() => import("./_nuxt/error-500-DEOD47jj.js"));
+    const _Error404 = defineAsyncComponent(() => import("./_nuxt/error-404-BV37FdML.js"));
+    const _Error = defineAsyncComponent(() => import("./_nuxt/error-500-CWyXHwuW.js"));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));

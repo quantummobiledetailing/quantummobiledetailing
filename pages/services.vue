@@ -9,7 +9,7 @@
     </section>
 
     <section class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
-      <article v-for="servicePackage in packages" :key="servicePackage.title" class="glow-card flex flex-col rounded-3xl p-6">
+      <article v-for="servicePackage in packages" :key="servicePackage.title" class="glow-card flex h-full flex-col rounded-3xl p-6">
         <div class="flex items-start justify-between gap-4">
           <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ servicePackage.tier }}</span>
           <div class="text-right">
@@ -27,10 +27,8 @@
           Call About {{ servicePackage.title }}
         </button>
       </article>
-    </section>
 
-    <section class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
-      <article class="glow-card rounded-3xl p-6">
+      <article class="glow-card flex h-full flex-col rounded-3xl p-6 sm:col-span-2 lg:col-span-1 lg:col-start-3">
         <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Add-ons</p>
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
           <div v-for="addon in addOns" :key="addon.title" class="rounded-2xl border border-white/10 p-4">
@@ -40,15 +38,25 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="mx-auto max-w-6xl">
       <article class="glow-card rounded-3xl p-6">
         <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Process Breakdown</p>
-        <ol class="mt-4 space-y-4 text-sm text-slate-300">
-          <li><span class="font-semibold text-white">01.</span> Pre-rinse with softened water and citrus foam dwell.</li>
-          <li><span class="font-semibold text-white">02.</span> Two-bucket contact wash, wheel decon, and iron removal.</li>
-          <li><span class="font-semibold text-white">03.</span> Paint inspection, tape masking, and machine polishing.</li>
-          <li><span class="font-semibold text-white">04.</span> Ceramic/graphene protection applied in controlled sections.</li>
-          <li><span class="font-semibold text-white">05.</span> Interior detail, steam sanitation, and fragrance-free finish.</li>
-        </ol>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div v-for="section in detailSections" :key="section.title" class="rounded-2xl border border-white/10 p-4">
+            <div class="flex items-center gap-3">
+              <component :is="section.icon" class="h-6 w-6 text-brand-primary" aria-hidden="true" />
+              <h3 class="text-lg font-semibold text-white">{{ section.title }}</h3>
+            </div>
+            <ul class="mt-4 space-y-3 text-sm text-slate-300">
+              <li v-for="item in section.items" :key="item.title" class="border-l border-brand-primary/40 pl-3">
+                <p class="font-semibold text-white">{{ item.title }}</p>
+                <p class="text-xs text-slate-400">{{ item.description }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </article>
     </section>
     <Teleport to="body">
@@ -74,6 +82,10 @@
 </template>
 
 <script setup lang="ts">
+import ClipboardDocumentListIcon from '~/components/icons/ClipboardDocumentListIcon.vue'
+import SparklesIcon from '~/components/icons/SparklesIcon.vue'
+import TruckIcon from '~/components/icons/TruckIcon.vue'
+
 const showPhone = ref(false)
 const activePackage = ref<string | null>(null)
 const copied = ref(false)
@@ -189,10 +201,67 @@ const packages = [
 ]
 
 const addOns = [
-  { title: 'Headlight Restoration', description: 'Wet-sand, polish, and UV seal for fogged lamps.', price: '$120' },
-  { title: 'Fabric Guard', description: 'Hydrophobic coating keeps Oregon rain out of cloth seats.', price: '$95' },
+  { title: 'Headlight Restoration', description: 'Wet-sand, polish, and UV seal for fogged lamps.', price: '$100' },
+  {
+    title: 'Engine Bay Cleaning',
+    description: 'Degrease plastics, dress hoses, and leave the bay show-ready before you pop the hood.',
+    price: '$100',
+  },
+  { title: 'Seat Shampoo', description: 'Hot-water extraction lifts spills and refreshes cloth seating surfaces.', price: '$80' },
   { title: 'Pet Hair Package', description: 'Specialized extraction after hikes and river trips.', price: '$80' },
   { title: 'Fleet Maintenance', description: 'Custom pricing for local businesses or boat tow rigs.', price: 'Contact' },
+]
+
+const detailSections = [
+  {
+    title: 'Interior Detailing Includes',
+    icon: ClipboardDocumentListIcon,
+    items: [
+      { title: 'Declutter & Remove Trash', description: 'Clear personal items and garbage for a fresh start.' },
+      { title: 'Floor Mat Care', description: 'Remove, clean, and restore mats to like-new condition.' },
+      { title: 'Interior Dusting', description: 'Dash, vents, seats, and floors receive gentle dust removal.' },
+      { title: 'Door & Trunk Jamb Cleaning', description: 'Clean and protect the edges and seals.' },
+      { title: 'Headliner Spot Cleaning', description: 'Careful fabric treatment to lift isolated marks.' },
+      { title: 'Full Interior Vacuum', description: 'Seats, floors, and trunk thoroughly vacuumed.' },
+      { title: 'Plastics & Leather Care', description: 'Clean and protect every surface with the right chemistry.' },
+      { title: 'Fabric & Seat Protection', description: 'Deep clean textiles and apply protective barriers.' },
+      { title: 'Pedal Cleaning', description: 'Brush and wipe pedal assemblies for a crisp feel.' },
+      { title: 'Carpet Care', description: 'Agitate and treat carpets to extract grime and odors.' },
+      { title: 'Glass Cleaning', description: 'Crystal-clear windows, mirrors, and screens.' },
+      { title: 'Final Touch', description: 'Vacuum touch-up plus a fragrance-free air refresh.' },
+    ],
+  },
+  {
+    title: 'Exterior Detailing Includes',
+    icon: TruckIcon,
+    items: [
+      { title: 'Two-Step Wash', description: 'No-touch pre-rinse followed by a meticulous hand wash.' },
+      { title: 'Towel Dry', description: 'Lint-free drying leaves a spotless finish.' },
+      { title: 'Surface Clay Treatment', description: 'Removes embedded contaminants and minor defects.' },
+      {
+        title: 'Paint Sealant Protection',
+        description: 'Six-month synthetic sealant that locks in shine and durability.',
+      },
+    ],
+  },
+  {
+    title: 'Paint Services Include',
+    icon: SparklesIcon,
+    items: [
+      {
+        title: 'Paint Enhancement',
+        description: 'Exterior Detail plus a 1-step finish polish to remove swirls and revive gloss.',
+      },
+      {
+        title: 'Paint Correction (1-Step)',
+        description: 'Exterior Detail plus cutting and finish polishes to clear swirls and light scratches.',
+      },
+      {
+        title: 'Paint Correction (2-Step)',
+        description: 'Exterior Detail plus deep cut, cutting, and finish polishes for near-perfect clarity.',
+      },
+    ],
+  },
 ]
 </script>
 

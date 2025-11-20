@@ -14,6 +14,9 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 interface _GlobalComponents {
+  'IconsClipboardDocumentListIcon': typeof import("../../components/icons/ClipboardDocumentListIcon.vue")['default']
+  'IconsSparklesIcon': typeof import("../../components/icons/SparklesIcon.vue")['default']
+  'IconsTruckIcon': typeof import("../../components/icons/TruckIcon.vue")['default']
   'NuxtWelcome': typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   'NuxtLayout': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   'NuxtErrorBoundary': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -37,6 +40,9 @@ interface _GlobalComponents {
   'Html': typeof import("../../node_modules/nuxt/dist/head/runtime/components")['Html']
   'Body': typeof import("../../node_modules/nuxt/dist/head/runtime/components")['Body']
   'NuxtIsland': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-island")['default']
+  'LazyIconsClipboardDocumentListIcon': LazyComponent<typeof import("../../components/icons/ClipboardDocumentListIcon.vue")['default']>
+  'LazyIconsSparklesIcon': LazyComponent<typeof import("../../components/icons/SparklesIcon.vue")['default']>
+  'LazyIconsTruckIcon': LazyComponent<typeof import("../../components/icons/TruckIcon.vue")['default']>
   'LazyNuxtWelcome': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   'LazyNuxtLayout': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   'LazyNuxtErrorBoundary': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
