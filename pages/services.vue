@@ -1,10 +1,10 @@
-﻿<template>
+<template>
   <main class="space-y-16 px-6 py-16 sm:px-10">
     <section class="mx-auto max-w-5xl space-y-4 text-center">
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Services</p>
       <h1 class="text-4xl font-semibold text-white">Tailored detailing programs for every finish.</h1>
       <p class="text-lg text-slate-300">
-        Choose from curated packages or build a bespoke plan with our specialists. Pricing reflects most coupes and sedansâ€”final quotes follow inspection.
+        Choose from curated packages or build a bespoke plan with our specialists. All "starts at" prices assume a standard 4-door sedan; final quotes adjust based on vehicle size and condition.
       </p>
     </section>
 
@@ -288,6 +288,7 @@ const detailSections = [
   },
 ]
 </script>
+
 
 
 
