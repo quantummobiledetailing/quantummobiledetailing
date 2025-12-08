@@ -195,7 +195,7 @@ const services = [
 ]
 
 const testimonials = [
-  { name: 'Cody', quote: 'The paint enhancement makes my car look amazing. Thank you so much.' },
+  { name: 'Cody Finch', quote: 'The paint enhancement makes my car look amazing. Thank you so much.' },
   {
     name: 'Eric Farrell',
     quote: 'I couldn’t be happier with Ryan’s work! He’s professional, detail-oriented, and clearly takes pride in what he does. If you’re looking for a trustworthy local car detailer, this is the place to go.',

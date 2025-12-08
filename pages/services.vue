@@ -134,13 +134,10 @@ const packages = [
     title: 'Interior & Exterior Detail',
     price: '$250',
     duration: '4 - 4.5 hrs',
-    summary: 'Our most popular Saint Helens package for reviving daily drivers inside and out.',
+    summary: 'Bundle pricing that combines the full Exterior Detail and Interior Detail in one visit.',
     features: [
-      'Two-step wash with no-touch pre-rinse and hand dry',
-      'Surface clay treatment removes contaminants',
-      'Wheel, tire, and trim deep clean with dressing',
-      'Declutter, vacuum, plastics/leather care, glass',
-      'Paint sealant for 6-month protection',
+      'Best value: exterior + interior details packaged together at a discount.',
+      'See the Process Breakdown below for the full step-by-step interior and exterior coverage.',
     ],
   },
   {
@@ -261,6 +258,8 @@ const detailSections = [
     items: [
       { title: 'Two-Step Wash', description: 'No-touch pre-rinse followed by a meticulous hand wash.' },
       { title: 'Towel Dry', description: 'Lint-free drying leaves a spotless finish.' },
+      { title: 'Wheel & Tire Cleaning', description: 'Wheels scrubbed, tires cleaned thoroughly, trim refreshed.' },
+      { title: 'Tire Dressing', description: 'Protective, satin finish tire dressing for a crisp look.' },
       { title: 'Surface Clay Treatment', description: 'Removes embedded contaminants and minor defects.' },
       {
         title: 'Paint Sealant Protection',
