@@ -1,6 +1,6 @@
 <template>
   <main class="space-y-16 px-6 py-16 sm:px-10">
-    <section class="mx-auto max-w-5xl space-y-4 text-center">
+    <section class="mx-auto max-w-5xl space-y-4 text-center reveal" data-reveal>
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Services</p>
       <h1 class="text-4xl font-semibold text-white">Tailored detailing programs for every finish.</h1>
       <p class="text-lg text-slate-300">
@@ -8,9 +8,15 @@
       </p>
     </section>
 
-    <section class="mx-auto max-w-6xl space-y-6">
+    <section class="mx-auto max-w-6xl space-y-6 reveal" data-reveal>
       <div class="grid gap-6 lg:grid-cols-3">
-        <article v-for="servicePackage in packages" :key="servicePackage.title" class="glow-card flex h-full flex-col rounded-3xl p-6">
+        <article
+          v-for="(servicePackage, index) in packages"
+          :key="servicePackage.title"
+          class="glow-card card-hover flex h-full flex-col rounded-3xl p-6 reveal"
+          data-reveal
+          :data-reveal-delay="index * 60"
+        >
           <div class="flex items-start justify-between gap-4">
             <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ servicePackage.tier }}</span>
             <div class="text-right">
@@ -31,7 +37,7 @@
       </div>
 
       <div class="grid gap-6 lg:grid-cols-3">
-        <article class="glow-card flex h-full flex-col rounded-3xl p-6">
+        <article class="glow-card card-hover flex h-full flex-col rounded-3xl p-6 reveal" data-reveal>
           <div class="flex items-start justify-between gap-4">
             <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ ceramicPackage.tier }}</span>
             <div class="text-right">
@@ -50,10 +56,16 @@
           </button>
         </article>
 
-        <article class="glow-card flex h-full flex-col rounded-3xl p-6 lg:col-span-2">
+        <article class="glow-card card-hover flex h-full flex-col rounded-3xl p-6 lg:col-span-2 reveal" data-reveal data-reveal-delay="120">
           <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Add-ons</p>
           <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div v-for="addon in addOns" :key="addon.title" class="rounded-2xl border border-white/10 p-4">
+            <div
+              v-for="(addon, index) in addOns"
+              :key="addon.title"
+              class="rounded-2xl border border-white/10 p-4 reveal"
+              data-reveal
+              :data-reveal-delay="index * 50"
+            >
               <h3 class="text-lg font-semibold text-white">{{ addon.title }}</h3>
               <p class="text-sm text-slate-300">{{ addon.description }}</p>
               <p class="mt-3 text-sm font-semibold text-brand-primary">{{ addon.price }}</p>
@@ -63,11 +75,17 @@
       </div>
     </section>
 
-    <section class="mx-auto max-w-6xl">
-      <article class="glow-card rounded-3xl p-6">
+    <section class="mx-auto max-w-6xl reveal" data-reveal>
+      <article class="glow-card card-hover rounded-3xl p-6 reveal" data-reveal>
         <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Process Breakdown</p>
         <div class="mt-6 grid gap-6 md:grid-cols-3">
-          <div v-for="section in detailSections" :key="section.title" class="rounded-2xl border border-white/10 p-4">
+          <div
+            v-for="(section, index) in detailSections"
+            :key="section.title"
+            class="rounded-2xl border border-white/10 p-4 reveal"
+            data-reveal
+            :data-reveal-delay="index * 80"
+          >
             <div class="flex items-center gap-3">
               <component :is="section.icon" class="h-6 w-6 text-brand-primary" aria-hidden="true" />
               <h3 class="text-lg font-semibold text-white">{{ section.title }}</h3>
@@ -84,7 +102,7 @@
     </section>
     <Teleport to="body">
       <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
-        <div class="relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
+        <div class="drip-panel relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
           <button class="absolute right-4 top-4 text-slate-400 hover:text-white" aria-label="Close phone window" @click="showPhone = false">
             &times;
           </button>
@@ -112,6 +130,8 @@ import TruckIcon from '~/components/icons/TruckIcon.vue'
 const showPhone = ref(false)
 const activePackage = ref<string | null>(null)
 const copied = ref(false)
+
+useRevealOnScroll()
 
 const openPhone = (title: string) => {
   activePackage.value = title

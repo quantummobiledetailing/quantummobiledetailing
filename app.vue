@@ -1,6 +1,9 @@
 <template>
   <div class="min-h-screen bg-black text-slate-100">
-    <header class="sticky top-0 z-20 border-b border-white/10 bg-gradient-to-r from-red-600 via-yellow-300 to-black">
+    <header
+      class="site-header sticky top-0 z-20 border-b border-white/10 bg-gradient-to-r from-red-600 via-yellow-300 to-black"
+      :class="{ 'site-header--scrolled': isScrolled }"
+    >
       <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
         <NuxtLink to="/" class="text-2xl font-semibold tracking-wide">
           <span class="text-yellow-300">Q</span>
@@ -24,7 +27,7 @@
               v-for="item in navLinks"
               :key="item.to"
               :to="item.to"
-              class="whitespace-nowrap tracking-wide hover:text-brand-primary"
+              class="link-underline whitespace-nowrap tracking-wide hover:text-brand-primary"
             >
               {{ item.label }}
             </NuxtLink>
@@ -57,11 +60,11 @@
               v-for="item in navLinks"
               :key="item.to"
               :to="item.to"
-              class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white transition hover:border-brand-primary hover:bg-brand-primary/10"
+              class="link-chevron flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white transition hover:border-brand-primary hover:bg-brand-primary/10"
               @click="closeMobileNav"
             >
               <span>{{ item.label }}</span>
-              <svg class="h-4 w-4 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg class="chevron-nudge h-4 w-4 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </NuxtLink>
@@ -77,8 +80,8 @@
       <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p>Serving Saint Helens & the Oregon Northwest • © {{ currentYear }} Quantum Mobile Detailing</p>
         <div class="flex gap-4 text-slate-500">
-          <a href="mailto:quantummobiledetailingllc@gmail.com" class="hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a>
-          <a href="tel:+15415010698" class="hover:text-brand-primary">(541) 501-0698</a>
+          <a href="mailto:quantummobiledetailingllc@gmail.com" class="link-underline hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a>
+          <a href="tel:+15415010698" class="link-underline hover:text-brand-primary">(541) 501-0698</a>
         </div>
       </div>
     </footer>
@@ -94,6 +97,7 @@ const navLinks = [
 ]
 
 const mobileNavOpen = ref(false)
+const isScrolled = ref(false)
 
 const openMobileNav = () => {
   mobileNavOpen.value = true
@@ -102,6 +106,19 @@ const openMobileNav = () => {
 const closeMobileNav = () => {
   mobileNavOpen.value = false
 }
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 12
+}
+
+onMounted(() => {
+  handleScroll()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 const currentYear = new Date().getFullYear()
 </script>

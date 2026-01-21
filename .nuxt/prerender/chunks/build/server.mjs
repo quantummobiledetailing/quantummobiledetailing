@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineComponent, shallowRef, h, resolveComponent, hasInjectionContext, getCurrentInstance, computed, ref, inject, Suspense, Fragment, useSSRContext, createApp, provide, shallowReactive, mergeProps, withCtx, createVNode, unref, createTextVNode, toDisplayString, createBlock, openBlock, toRef, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, reactive, effectScope, isReadonly, isRef, isShallow, isReactive, toRaw, defineAsyncComponent, getCurrentScope } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue/index.mjs';
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineComponent, shallowRef, h, resolveComponent, hasInjectionContext, getCurrentInstance, computed, ref, inject, Suspense, Fragment, useSSRContext, createApp, provide, shallowReactive, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, toRef, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, reactive, effectScope, isReadonly, isRef, isShallow, isReactive, toRaw, defineAsyncComponent, getCurrentScope } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue/index.mjs';
 import { $fetch } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/ofetch/dist/node.mjs';
 import { b as baseURL } from '../_/renderer.mjs';
 import { createHooks } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/hookable/dist/index.mjs';
@@ -8,7 +8,7 @@ import { RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'f
 import { toRouteMatcher, createRouter as createRouter$1 } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/radix3/dist/index.mjs';
 import { defu } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/defu/dist/defu.mjs';
 import { parseQuery, hasProtocol, joinURL, withQuery, withTrailingSlash, withoutTrailingSlash, isScriptProtocol } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/ufo/dist/index.mjs';
-import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrRenderList, ssrInterpolate, ssrRenderTeleport, ssrRenderSuspense, ssrRenderVNode } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue/server-renderer/index.mjs';
+import { ssrRenderAttrs, ssrRenderClass, ssrRenderComponent, ssrRenderAttr, ssrRenderList, ssrInterpolate, ssrRenderTeleport, ssrRenderSuspense, ssrRenderVNode } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue/server-renderer/index.mjs';
 import 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import '../_/nitro.mjs';
 import 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/destr/dist/index.mjs';
@@ -400,27 +400,27 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import('./about-Dt2Z2Wqi.mjs')
+    component: () => import('./about-ASAimqcb.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-DCrCrMLc.mjs')
+    component: () => import('./index-82D3b9TG.mjs')
   },
   {
     name: "booking",
     path: "/booking",
-    component: () => import('./booking-B7ZdOZC5.mjs')
+    component: () => import('./booking-BYVerHDp.mjs')
   },
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import('./gallery-DvILCB7-.mjs')
+    component: () => import('./gallery-C0dZ1lFl.mjs')
   },
   {
     name: "services",
     path: "/services",
-    component: () => import('./services-CxiQlfGB.mjs')
+    component: () => import('./services-DnMv4G_n.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
@@ -1180,6 +1180,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       { label: "Gallery", to: "/gallery" }
     ];
     const mobileNavOpen = ref(false);
+    const isScrolled = ref(false);
     const closeMobileNav = () => {
       mobileNavOpen.value = false;
     };
@@ -1187,7 +1188,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0;
       const _component_NuxtPage = __nuxt_component_1;
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-black text-slate-100" }, _attrs))}><header class="sticky top-0 z-20 border-b border-white/10 bg-gradient-to-r from-red-600 via-yellow-300 to-black"><div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-black text-slate-100" }, _attrs))}><header class="${ssrRenderClass([{ "site-header--scrolled": unref(isScrolled) }, "site-header sticky top-0 z-20 border-b border-white/10 bg-gradient-to-r from-red-600 via-yellow-300 to-black"])}"><div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">`);
       _push(ssrRenderComponent(_component_NuxtLink, {
         to: "/",
         class: "text-2xl font-semibold tracking-wide"
@@ -1209,7 +1210,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         _push(ssrRenderComponent(_component_NuxtLink, {
           key: item.to,
           to: item.to,
-          class: "whitespace-nowrap tracking-wide hover:text-brand-primary"
+          class: "link-underline whitespace-nowrap tracking-wide hover:text-brand-primary"
         }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
@@ -1231,17 +1232,17 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
             _push2(ssrRenderComponent(_component_NuxtLink, {
               key: item.to,
               to: item.to,
-              class: "flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white transition hover:border-brand-primary hover:bg-brand-primary/10",
+              class: "link-chevron flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white transition hover:border-brand-primary hover:bg-brand-primary/10",
               onClick: closeMobileNav
             }, {
               default: withCtx((_, _push3, _parent2, _scopeId) => {
                 if (_push3) {
-                  _push3(`<span${_scopeId}>${ssrInterpolate(item.label)}</span><svg class="h-4 w-4 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"${_scopeId}><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"${_scopeId}></path></svg>`);
+                  _push3(`<span${_scopeId}>${ssrInterpolate(item.label)}</span><svg class="chevron-nudge h-4 w-4 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"${_scopeId}><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"${_scopeId}></path></svg>`);
                 } else {
                   return [
                     createVNode("span", null, toDisplayString(item.label), 1),
                     (openBlock(), createBlock("svg", {
-                      class: "h-4 w-4 text-brand-primary",
+                      class: "chevron-nudge h-4 w-4 text-brand-primary",
                       viewBox: "0 0 24 24",
                       fill: "none",
                       stroke: "currentColor",
@@ -1265,7 +1266,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         }
       }, "body", false, _parent);
       _push(ssrRenderComponent(_component_NuxtPage, null, null, _parent));
-      _push(`<footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10"><div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>Serving Saint Helens &amp; the Oregon Northwest • © ${ssrInterpolate(unref(currentYear))} Quantum Mobile Detailing</p><div class="flex gap-4 text-slate-500"><a href="mailto:quantummobiledetailingllc@gmail.com" class="hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a><a href="tel:+15415010698" class="hover:text-brand-primary">(541) 501-0698</a></div></div></footer></div>`);
+      _push(`<footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10"><div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>Serving Saint Helens &amp; the Oregon Northwest • © ${ssrInterpolate(unref(currentYear))} Quantum Mobile Detailing</p><div class="flex gap-4 text-slate-500"><a href="mailto:quantummobiledetailingllc@gmail.com" class="link-underline hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a><a href="tel:+15415010698" class="link-underline hover:text-brand-primary">(541) 501-0698</a></div></div></footer></div>`);
     };
   }
 });

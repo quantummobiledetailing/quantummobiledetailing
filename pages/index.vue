@@ -1,12 +1,12 @@
 <template>
   <main class="space-y-16 pb-16">
-    <section class="relative overflow-hidden px-6 py-20 sm:px-10">
+    <section class="relative overflow-hidden px-6 py-20 sm:px-10 reveal" data-reveal>
       <div class="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
         <div class="space-y-6 text-center lg:text-left">
           <div class="flex justify-center">
             <img src="/images/logo-watermark.png" alt="Quantum Mobile Detailing logo" class="h-64 w-auto max-w-sm sm:max-w-md" />
           </div>
-          <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens â€¢ Oregon Northwest</p>
+          <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens ƒ?› Oregon Northwest</p>
           <h1 class="text-4xl font-semibold leading-tight text-white sm:text-5xl">
             Mobile Detailing with Quantum Level Precision
           </h1>
@@ -19,7 +19,13 @@
           </div>
         </div>
         <div class="grid flex-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <div v-for="stat in heroStats" :key="stat.label" class="glow-card rounded-3xl px-6 py-6 text-left">
+          <div
+            v-for="(stat, index) in heroStats"
+            :key="stat.label"
+            class="glow-card card-hover rounded-3xl px-6 py-6 text-left reveal"
+            data-reveal
+            :data-reveal-delay="index * 80"
+          >
             <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">{{ stat.label }}</p>
             <p class="mt-3 text-3xl font-semibold text-white sm:text-4xl">{{ stat.value }}</p>
           </div>
@@ -27,9 +33,15 @@
       </div>
     </section>
 
-    <section class="px-6 sm:px-10">
+    <section class="px-6 sm:px-10 reveal" data-reveal>
       <div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
-        <article v-for="feature in features" :key="feature.title" class="glow-card rounded-3xl p-6">
+        <article
+          v-for="(feature, index) in features"
+          :key="feature.title"
+          class="glow-card card-hover rounded-3xl p-6 reveal"
+          data-reveal
+          :data-reveal-delay="index * 80"
+        >
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
             <component
               :is="feature.icon"
@@ -44,15 +56,24 @@
       </div>
     </section>
 
-    <section class="bg-slate-900/40 px-6 py-16 sm:px-10">
+    <section class="bg-slate-900/40 px-6 py-16 sm:px-10 reveal" data-reveal>
       <div class="mx-auto max-w-6xl space-y-10">
         <header class="space-y-4 text-center">
-          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Signature Packages</p>
+          <div class="flex items-center justify-center gap-2 text-brand-primary/80">
+            <SparklesIcon class="accent-spark h-4 w-4" aria-hidden="true" />
+            <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Signature Packages</p>
+          </div>
           <h2 class="text-3xl font-semibold text-white">Hand-crafted plans to fit every finish</h2>
           <p class="text-slate-300">Each package is tailored during your consultation, balancing your driving habits, vehicle type, and aftercare goals.</p>
         </header>
         <div class="grid gap-6 md:grid-cols-3">
-          <article v-for="service in services" :key="service.tier" class="glow-card flex flex-col rounded-3xl p-6">
+          <article
+            v-for="(service, index) in services"
+            :key="service.tier"
+            class="glow-card card-hover flex flex-col rounded-3xl p-6 reveal"
+            data-reveal
+            :data-reveal-delay="index * 80"
+          >
             <div class="flex items-center justify-between">
               <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ service.tier }}</span>
               <div class="text-right">
@@ -73,9 +94,9 @@
       </div>
     </section>
 
-    <section class="px-6 sm:px-10">
+    <section class="px-6 sm:px-10 reveal" data-reveal>
       <div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
-        <article class="glow-card rounded-3xl p-6">
+        <article class="glow-card card-hover rounded-3xl p-6 reveal" data-reveal>
           <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">Testimonials</p>
           <h3 class="mt-3 text-2xl font-semibold text-white">Clients trust us with their daily drivers and collectibles.</h3>
           <div class="mt-6 max-h-72 space-y-6 overflow-y-auto pr-2">
@@ -85,7 +106,7 @@
             </figure>
           </div>
         </article>
-        <article class="glow-card rounded-3xl p-6">
+        <article class="glow-card card-hover rounded-3xl p-6 reveal" data-reveal data-reveal-delay="120">
           <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">Coverage Area</p>
           <h3 class="mt-3 text-2xl font-semibold text-white">Proudly serving Saint Helens, Scappoose, Rainier, and the greater Oregon Northwest.</h3>
           <p class="mt-3 text-sm text-slate-300">
@@ -94,20 +115,28 @@
           <p class="mt-3 text-sm text-slate-300">
             Columbia County routes keep travel fees minimal, but we routinely head into Portland, Vancouver, and coastal towns when we negotiate fair trip pricing during your estimate.
           </p>
+          <p class="mt-3 text-sm text-slate-300">
+            For larger projects and exotic builds, we are happy to travel farther so we can care for supercars and hypercars the right way. Let us know the vehicle and location, and we will make a custom plan that fits the scope.
+          </p>
         </article>
       </div>
     </section>
     <Teleport to="body">
       <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
-        <div class="relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
-          <button
-            class="absolute right-4 top-4 text-slate-400 hover:text-white"
-            @click="showPhone = false"
-            aria-label="Close phone window"
-          >
-            &times;
-          </button>
-          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+        <div class="drip-panel relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
+          <div class="flex items-center justify-between">
+            <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+            <button
+              type="button"
+              class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-slate-200 transition hover:border-brand-primary hover:text-brand-primary"
+              @click="showPhone = false"
+              aria-label="Close phone window"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12" />
+              </svg>
+            </button>
+          </div>
           <p class="mt-4 text-center text-3xl font-bold text-white drip-text">
             (541) 501-0698
           </p>
@@ -132,6 +161,8 @@ import TruckIcon from '~/components/icons/TruckIcon.vue'
 
 const showPhone = ref(false)
 const copied = ref(false)
+
+useRevealOnScroll()
 
 const copyPhone = async () => {
   try {
@@ -198,7 +229,7 @@ const testimonials = [
   { name: 'Cody Finch', quote: 'The paint enhancement makes my car look amazing. Thank you so much.' },
   {
     name: 'Eric Farrell',
-    quote: 'I couldnâ€™t be happier with Ryanâ€™s work! Heâ€™s professional, detail-oriented, and clearly takes pride in what he does. If youâ€™re looking for a trustworthy local car detailer, this is the place to go.',
+    quote: 'I couldnƒ?Tt be happier with Ryanƒ?Ts work! Heƒ?Ts professional, detail-oriented, and clearly takes pride in what he does. If youƒ?Tre looking for a trustworthy local car detailer, this is the place to go.',
   },
   {
     name: 'Austen Tanner',
@@ -214,7 +245,7 @@ const testimonials = [
   },
   {
     name: 'Jonathan Hunter',
-    quote: 'Ryan and his team did an amazing jobâ€”my car looks brand new!',
+    quote: 'Ryan and his team did an amazing jobƒ?"my car looks brand new!',
   },
   {
     name: 'Trace Ericksen',

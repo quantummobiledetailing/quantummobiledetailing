@@ -120,6 +120,7 @@ declare global {
   const useRequestHeaders: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').useRequestHeaders
   const useRequestURL: typeof import('../../node_modules/nuxt/dist/app/composables/url').useRequestURL
   const useResponseHeader: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').useResponseHeader
+  const useRevealOnScroll: typeof import('../../composables/useRevealOnScroll').useRevealOnScroll
   const useRoute: typeof import('../../node_modules/nuxt/dist/app/composables/router').useRoute
   const useRouteAnnouncer: typeof import('../../node_modules/nuxt/dist/app/composables/route-announcer').useRouteAnnouncer
   const useRouter: typeof import('../../node_modules/nuxt/dist/app/composables/router').useRouter
@@ -304,6 +305,7 @@ declare module 'vue' {
     readonly useRequestHeaders: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeaders']>
     readonly useRequestURL: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/url')['useRequestURL']>
     readonly useResponseHeader: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useResponseHeader']>
+    readonly useRevealOnScroll: UnwrapRef<typeof import('../../composables/useRevealOnScroll')['useRevealOnScroll']>
     readonly useRoute: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRoute']>
     readonly useRouteAnnouncer: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/route-announcer')['useRouteAnnouncer']>
     readonly useRouter: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRouter']>
