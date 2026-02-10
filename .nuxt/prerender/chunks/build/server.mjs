@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineComponent, shallowRef, h, resolveComponent, hasInjectionContext, getCurrentInstance, computed, ref, inject, Suspense, Fragment, useSSRContext, createApp, provide, shallowReactive, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, toRef, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, reactive, effectScope, isReadonly, isRef, isShallow, isReactive, toRaw, defineAsyncComponent, getCurrentScope } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue/index.mjs';
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineComponent, shallowRef, h, resolveComponent, hasInjectionContext, getCurrentInstance, inject, computed, ref, Suspense, Fragment, useSSRContext, createApp, provide, shallowReactive, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, toRef, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, reactive, effectScope, isReadonly, isRef, isShallow, isReactive, toRaw, defineAsyncComponent, getCurrentScope } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/vue/index.mjs';
 import { $fetch } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/ofetch/dist/node.mjs';
 import { b as baseURL } from '../_/renderer.mjs';
 import { createHooks } from 'file://C:/Users/ryand/quantummobiledetailing/quantummobiledetailing/node_modules/hookable/dist/index.mjs';
@@ -415,7 +415,7 @@ const _routes = [
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import('./gallery-C0dZ1lFl.mjs')
+    component: () => import('./gallery-Bb5g63QQ.mjs')
   },
   {
     name: "services",
@@ -1379,5 +1379,5 @@ let entry;
 }
 const entry_default = (ssrContext) => entry(ssrContext);
 
-export { __nuxt_component_0 as _, entry_default as default, tryUseNuxtApp as t };
+export { __nuxt_component_0 as _, useRouter as a, entry_default as default, tryUseNuxtApp as t, useRoute as u };
 //# sourceMappingURL=server.mjs.map

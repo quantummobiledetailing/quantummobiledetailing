@@ -145,15 +145,23 @@ const zoom = ref(1)
 const minZoom = 1
 const maxZoom = 3
 const zoomStep = 0.12
+const route = useRoute()
+const router = useRouter()
 
 const openShot = (shot: GalleryShot) => {
   activeShot.value = shot
   zoom.value = 1
+  if (route.hash !== '#lightbox') {
+    router.push({ hash: '#lightbox' })
+  }
 }
 
-const closeShot = () => {
+const closeShot = (opts: { fromRoute?: boolean } = {}) => {
   activeShot.value = null
   zoom.value = 1
+  if (!opts.fromRoute && route.hash === '#lightbox') {
+    router.back()
+  }
 }
 
 const copyPhone = async () => {
@@ -190,6 +198,15 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
 })
+
+watch(
+  () => route.hash,
+  (hash) => {
+    if (hash !== '#lightbox' && activeShot.value) {
+      closeShot({ fromRoute: true })
+    }
+  }
+)
 </script>
 
 

@@ -396,7 +396,7 @@ const _routes = [
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import("./_nuxt/gallery-C0dZ1lFl.js")
+    component: () => import("./_nuxt/gallery-Bb5g63QQ.js")
   },
   {
     name: "services",
@@ -1368,7 +1368,9 @@ let entry;
 const entry_default = (ssrContext) => entry(ssrContext);
 export {
   __nuxt_component_0 as _,
+  useRouter as a,
   entry_default as default,
-  tryUseNuxtApp as t
+  tryUseNuxtApp as t,
+  useRoute as u
 };
 //# sourceMappingURL=server.mjs.map
