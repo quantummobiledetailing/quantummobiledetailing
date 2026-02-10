@@ -6,8 +6,31 @@
       <p class="text-lg text-slate-300">Swipe through favorite projects that show correction depth, coating clarity, and interior resets after rainy commutes or coastal adventures.</p>
     </section>
 
+    <section class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+      <article v-for="shot in featuredShots" :key="shot.image" class="glow-card overflow-hidden rounded-3xl">
+        <button
+          type="button"
+          class="group block w-full text-left"
+          @click="openShot(shot)"
+        >
+          <div class="relative h-56 w-full overflow-hidden sm:h-64">
+            <img
+              :src="shot.image"
+              :alt="shot.title"
+              class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="pointer-events-none absolute inset-0 bg-slate-950/10"></div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white">{{ shot.title }}</h3>
+          </div>
+        </button>
+      </article>
+    </section>
+
     <section class="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <article v-for="shot in shots" :key="shot.title" class="glow-card overflow-hidden rounded-3xl">
+      <article v-for="shot in otherShots" :key="shot.image" class="glow-card overflow-hidden rounded-3xl">
         <button
           type="button"
           class="group block w-full text-left"
@@ -110,6 +133,7 @@
 type GalleryShot = {
   title: string
   image: string
+  key: string
 }
 
 const galleryModules = import.meta.glob('@/assets/gallery/*.{jpg,jpeg,png,webp}', {
@@ -123,20 +147,55 @@ const extractOrder = (filePath: string): number => {
   return match ? Number(match[0]) : Number.MAX_SAFE_INTEGER
 }
 
+const normalizeName = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/\.[^/.]+$/, '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+const featuredOrder: Record<string, number> = {
+  'toyota sienna before': 0,
+  'toyota sienna after': 1,
+}
+
+const featuredTitle: Record<string, string> = {
+  'toyota sienna before': 'Toyota Sienna Interior Before',
+  'toyota sienna after': 'Toyota Sienna Interior After',
+}
+
 const shots: GalleryShot[] = Object.entries(galleryModules)
-  .sort(([pathA], [pathB]) => extractOrder(pathA) - extractOrder(pathB))
+  .sort(([pathA], [pathB]) => {
+    const nameA = normalizeName(pathA.split('/').pop() ?? '')
+    const nameB = normalizeName(pathB.split('/').pop() ?? '')
+    const priorityA = featuredOrder[nameA] ?? Number.MAX_SAFE_INTEGER
+    const priorityB = featuredOrder[nameB] ?? Number.MAX_SAFE_INTEGER
+
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB
+    }
+
+    return extractOrder(pathA) - extractOrder(pathB)
+  })
   .map(([path, src]) => {
     const filename = path.split('/').pop() ?? 'Gallery Image'
-    const baseName = filename.replace(/\.[^/.]+$/, '')
+    const normalizedName = normalizeName(filename)
+    const baseName = filename.replace(/\.[^/.]+$/, '').replace(/^\d+[\s_-]*/, '')
     const prettyTitle = baseName
       .replace(/[-_]+/g, ' ')
       .replace(/\b\w/g, (char) => char.toUpperCase())
 
     return {
-      title: prettyTitle,
+      title: featuredTitle[normalizedName] ?? prettyTitle,
       image: src as string,
+      key: normalizedName,
     }
   })
+
+const featuredShots = shots.filter((shot) => shot.key in featuredOrder)
+
+const otherShots = shots.filter((shot) => !(shot.key in featuredOrder))
 
 const activeShot = ref<GalleryShot | null>(null)
 const showPhone = ref(false)

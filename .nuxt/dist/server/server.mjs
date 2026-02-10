@@ -396,7 +396,7 @@ const _routes = [
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import("./_nuxt/gallery-Bb5g63QQ.js")
+    component: () => import("./_nuxt/gallery-BDzXZzJ6.js")
   },
   {
     name: "services",
