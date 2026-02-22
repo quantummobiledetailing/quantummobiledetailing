@@ -415,7 +415,7 @@ const _routes = [
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import('./gallery-BDzXZzJ6.mjs')
+    component: () => import('./gallery-DEbxzlsf.mjs')
   },
   {
     name: "services",

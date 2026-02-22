@@ -74,14 +74,25 @@
             Close
           </button>
           <div
-            class="max-h-[85vh] w-full max-w-5xl overflow-auto"
+            ref="zoomContainer"
+            class="max-h-[85vh] w-full max-w-5xl overflow-hidden touch-none"
+            :class="zoomContainerClass"
             @wheel.prevent="handleZoom"
+            @pointerdown="startPan"
+            @pointermove="movePan"
+            @pointerup="endPan"
+            @pointercancel="endPan"
+            @dragstart.prevent
           >
             <img
+              ref="zoomImage"
               :src="activeShot.image"
               :alt="activeShot.title"
-              class="h-full w-full origin-center rounded-2xl object-contain shadow-2xl transition-transform duration-150"
-              :style="{ transform: `scale(${zoom})` }"
+              class="h-full w-full select-none origin-top-left rounded-2xl object-contain shadow-2xl"
+              :class="zoomImageClass"
+              :style="{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }"
+              draggable="false"
+              @dragstart.prevent
             />
           </div>
         </div>
@@ -201,6 +212,11 @@ const activeShot = ref<GalleryShot | null>(null)
 const showPhone = ref(false)
 const copied = ref(false)
 const zoom = ref(1)
+const pan = ref({ x: 0, y: 0 })
+const isDragging = ref(false)
+const dragStart = ref({ x: 0, y: 0, panX: 0, panY: 0 })
+const zoomContainer = ref<HTMLElement | null>(null)
+const zoomImage = ref<HTMLImageElement | null>(null)
 const minZoom = 1
 const maxZoom = 3
 const zoomStep = 0.12
@@ -210,6 +226,7 @@ const router = useRouter()
 const openShot = (shot: GalleryShot) => {
   activeShot.value = shot
   zoom.value = 1
+  pan.value = { x: 0, y: 0 }
   if (route.hash !== '#lightbox') {
     router.push({ hash: '#lightbox' })
   }
@@ -218,6 +235,7 @@ const openShot = (shot: GalleryShot) => {
 const closeShot = (opts: { fromRoute?: boolean } = {}) => {
   activeShot.value = null
   zoom.value = 1
+  pan.value = { x: 0, y: 0 }
   if (!opts.fromRoute && route.hash === '#lightbox') {
     router.back()
   }
@@ -238,10 +256,116 @@ const handleZoom = (event: WheelEvent) => {
     return
   }
 
+  const container = zoomContainer.value
+  const rect = container?.getBoundingClientRect()
   const direction = event.deltaY < 0 ? 1 : -1
   const nextZoom = zoom.value + direction * zoomStep
-  zoom.value = Math.min(maxZoom, Math.max(minZoom, Number(nextZoom.toFixed(2))))
+  const newZoom = Math.min(maxZoom, Math.max(minZoom, Number(nextZoom.toFixed(2))))
+
+  if (!rect || newZoom === zoom.value) {
+    zoom.value = newZoom
+    if (newZoom === 1) {
+      pan.value = { x: 0, y: 0 }
+    }
+    return
+  }
+
+  const cursorX = event.clientX - rect.left
+  const cursorY = event.clientY - rect.top
+  const scaleRatio = newZoom / zoom.value
+  const nextPanX = cursorX - (cursorX - pan.value.x) * scaleRatio
+  const nextPanY = cursorY - (cursorY - pan.value.y) * scaleRatio
+
+  zoom.value = newZoom
+  pan.value = clampPan(nextPanX, nextPanY, newZoom, rect)
 }
+
+const getContainedSize = (rect: DOMRect, image: HTMLImageElement | null) => {
+  if (!image || !image.naturalWidth || !image.naturalHeight) {
+    return { width: rect.width, height: rect.height }
+  }
+
+  const imageRatio = image.naturalWidth / image.naturalHeight
+  const containerRatio = rect.width / rect.height
+
+  if (imageRatio > containerRatio) {
+    const width = rect.width
+    const height = rect.width / imageRatio
+    return { width, height }
+  }
+
+  const height = rect.height
+  const width = rect.height * imageRatio
+  return { width, height }
+}
+
+const clampPan = (x: number, y: number, scale: number, rect?: DOMRect) => {
+  const container = zoomContainer.value
+  const bounds = rect ?? container?.getBoundingClientRect()
+
+  if (!bounds) {
+    return { x, y }
+  }
+
+  const baseSize = getContainedSize(bounds, zoomImage.value)
+  const scaledWidth = baseSize.width * scale
+  const scaledHeight = baseSize.height * scale
+  const minX = Math.min(0, bounds.width - scaledWidth)
+  const minY = Math.min(0, bounds.height - scaledHeight)
+
+  return {
+    x: Math.min(0, Math.max(minX, x)),
+    y: Math.min(0, Math.max(minY, y)),
+  }
+}
+
+const startPan = (event: PointerEvent) => {
+  if (zoom.value <= 1) {
+    return
+  }
+
+  isDragging.value = true
+  dragStart.value = {
+    x: event.clientX,
+    y: event.clientY,
+    panX: pan.value.x,
+    panY: pan.value.y,
+  }
+  ;(event.currentTarget as HTMLElement)?.setPointerCapture(event.pointerId)
+}
+
+const movePan = (event: PointerEvent) => {
+  if (!isDragging.value || zoom.value <= 1) {
+    return
+  }
+
+  const deltaX = event.clientX - dragStart.value.x
+  const deltaY = event.clientY - dragStart.value.y
+  const nextX = dragStart.value.panX + deltaX
+  const nextY = dragStart.value.panY + deltaY
+  pan.value = clampPan(nextX, nextY, zoom.value)
+}
+
+const endPan = (event: PointerEvent) => {
+  if (!isDragging.value) {
+    return
+  }
+
+  isDragging.value = false
+  ;(event.currentTarget as HTMLElement)?.releasePointerCapture(event.pointerId)
+}
+
+const zoomContainerClass = computed(() => {
+  if (zoom.value <= 1) {
+    return 'cursor-zoom-in'
+  }
+
+  return isDragging.value ? 'cursor-grabbing' : 'cursor-grab'
+})
+
+const zoomImageClass = computed(() =>
+  isDragging.value ? '' : 'transition-transform duration-150'
+)
 
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
