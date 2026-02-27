@@ -83,6 +83,10 @@
             @pointerup="endPan"
             @pointercancel="endPan"
             @dragstart.prevent
+            @touchstart.prevent="handleTouchStart"
+            @touchmove.prevent="handleTouchMove"
+            @touchend="handleTouchEnd"
+            @touchcancel="handleTouchEnd"
           >
             <img
               ref="zoomImage"
@@ -220,6 +224,20 @@ const zoomImage = ref<HTMLImageElement | null>(null)
 const minZoom = 1
 const maxZoom = 3
 const zoomStep = 0.12
+const pinchStart = ref<{
+  distance: number
+  zoom: number
+  panX: number
+  panY: number
+  midX: number
+  midY: number
+} | null>(null)
+const touchPanStart = ref<{
+  x: number
+  y: number
+  panX: number
+  panY: number
+} | null>(null)
 const route = useRoute()
 const router = useRouter()
 
@@ -278,6 +296,110 @@ const handleZoom = (event: WheelEvent) => {
 
   zoom.value = newZoom
   pan.value = clampPan(nextPanX, nextPanY, newZoom, rect)
+}
+
+const getTouchDistance = (touches: TouchList) => {
+  if (touches.length < 2) {
+    return 0
+  }
+  const [t1, t2] = [touches[0], touches[1]]
+  const dx = t2.clientX - t1.clientX
+  const dy = t2.clientY - t1.clientY
+  return Math.hypot(dx, dy)
+}
+
+const getTouchMidpoint = (touches: TouchList, rect: DOMRect) => {
+  const [t1, t2] = [touches[0], touches[1]]
+  return {
+    x: (t1.clientX + t2.clientX) / 2 - rect.left,
+    y: (t1.clientY + t2.clientY) / 2 - rect.top,
+  }
+}
+
+const handleTouchStart = (event: TouchEvent) => {
+  if (!activeShot.value) {
+    return
+  }
+
+  const container = zoomContainer.value
+  const rect = container?.getBoundingClientRect()
+  if (!rect) {
+    return
+  }
+
+  if (event.touches.length === 2) {
+    const distance = getTouchDistance(event.touches)
+    const mid = getTouchMidpoint(event.touches, rect)
+    pinchStart.value = {
+      distance,
+      zoom: zoom.value,
+      panX: pan.value.x,
+      panY: pan.value.y,
+      midX: mid.x,
+      midY: mid.y,
+    }
+    touchPanStart.value = null
+    return
+  }
+
+  if (event.touches.length === 1 && zoom.value > 1) {
+    const touch = event.touches[0]
+    touchPanStart.value = {
+      x: touch.clientX,
+      y: touch.clientY,
+      panX: pan.value.x,
+      panY: pan.value.y,
+    }
+  }
+}
+
+const handleTouchMove = (event: TouchEvent) => {
+  if (!activeShot.value) {
+    return
+  }
+
+  const container = zoomContainer.value
+  const rect = container?.getBoundingClientRect()
+  if (!rect) {
+    return
+  }
+
+  if (event.touches.length === 2 && pinchStart.value) {
+    const distance = getTouchDistance(event.touches)
+    if (!pinchStart.value.distance) {
+      return
+    }
+    const scaleRatio = distance / pinchStart.value.distance
+    const newZoom = Math.min(
+      maxZoom,
+      Math.max(minZoom, Number((pinchStart.value.zoom * scaleRatio).toFixed(2)))
+    )
+    const mid = getTouchMidpoint(event.touches, rect)
+    const zoomRatio = newZoom / pinchStart.value.zoom
+    const nextPanX = mid.x - (pinchStart.value.midX - pinchStart.value.panX) * zoomRatio
+    const nextPanY = mid.y - (pinchStart.value.midY - pinchStart.value.panY) * zoomRatio
+    zoom.value = newZoom
+    pan.value = clampPan(nextPanX, nextPanY, newZoom, rect)
+    return
+  }
+
+  if (event.touches.length === 1 && touchPanStart.value && zoom.value > 1) {
+    const touch = event.touches[0]
+    const deltaX = touch.clientX - touchPanStart.value.x
+    const deltaY = touch.clientY - touchPanStart.value.y
+    const nextX = touchPanStart.value.panX + deltaX
+    const nextY = touchPanStart.value.panY + deltaY
+    pan.value = clampPan(nextX, nextY, zoom.value, rect)
+  }
+}
+
+const handleTouchEnd = (event: TouchEvent) => {
+  if (event.touches.length < 2) {
+    pinchStart.value = null
+  }
+  if (event.touches.length === 0) {
+    touchPanStart.value = null
+  }
 }
 
 const getContainedSize = (rect: DOMRect, image: HTMLImageElement | null) => {

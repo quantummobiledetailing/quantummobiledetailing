@@ -400,12 +400,12 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import('./about-ASAimqcb.mjs')
+    component: () => import('./about-BOfXnbk1.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-82D3b9TG.mjs')
+    component: () => import('./index-BKML14eI.mjs')
   },
   {
     name: "booking",
@@ -415,7 +415,7 @@ const _routes = [
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import('./gallery-DEbxzlsf.mjs')
+    component: () => import('./gallery-Blk9MfuU.mjs')
   },
   {
     name: "services",
@@ -1266,7 +1266,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         }
       }, "body", false, _parent);
       _push(ssrRenderComponent(_component_NuxtPage, null, null, _parent));
-      _push(`<footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10"><div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>Serving Saint Helens &amp; the Oregon Northwest • © ${ssrInterpolate(unref(currentYear))} Quantum Mobile Detailing</p><div class="flex gap-4 text-slate-500"><a href="mailto:quantummobiledetailingllc@gmail.com" class="link-underline hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a><a href="tel:+15415010698" class="link-underline hover:text-brand-primary">(541) 501-0698</a></div></div></footer></div>`);
+      _push(`<footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10"><div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>Serving Saint Helens &amp; the Oregon Northwest - (c) ${ssrInterpolate(unref(currentYear))} Quantum Mobile Detailing</p><div class="flex gap-4 text-slate-500"><a href="mailto:quantummobiledetailingllc@gmail.com" class="link-underline hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a><a href="tel:+15415010698" class="link-underline hover:text-brand-primary">(541) 501-0698</a></div></div></footer></div>`);
     };
   }
 });

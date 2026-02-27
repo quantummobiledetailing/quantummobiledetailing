@@ -1,12 +1,13 @@
 <template>
   <main class="space-y-16 pb-16">
     <section class="relative overflow-hidden px-6 py-20 sm:px-10 reveal" data-reveal>
-      <div class="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
-        <div class="space-y-6 text-center lg:text-left">
-          <div class="flex justify-center">
-            <img src="/images/logo-watermark.png" alt="Quantum Mobile Detailing logo" class="h-64 w-auto max-w-sm sm:max-w-md" />
-          </div>
-          <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens ƒ?› Oregon Northwest</p>
+      <div class="mx-auto max-w-6xl space-y-10">
+        <div class="flex justify-center">
+          <img src="/images/logo-watermark.png" alt="Quantum Mobile Detailing logo" class="h-64 w-auto max-w-sm sm:max-w-md" />
+        </div>
+        <div class="hero-layout">
+          <div class="min-w-0 space-y-6 text-center lg:text-left">
+          <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens - Oregon Northwest</p>
           <h1 class="text-4xl font-semibold leading-tight text-white sm:text-5xl">
             Mobile Detailing with Quantum Level Precision
           </h1>
@@ -17,8 +18,8 @@
             <button type="button" @click="showPhone = true" class="btn-primary">Call Or Text</button>
             <NuxtLink to="/services" class="btn-outline">View Services</NuxtLink>
           </div>
-        </div>
-        <div class="grid flex-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          </div>
+          <div class="hero-stats-grid">
           <div
             v-for="(stat, index) in heroStats"
             :key="stat.label"
@@ -28,6 +29,7 @@
           >
             <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/70">{{ stat.label }}</p>
             <p class="mt-3 text-3xl font-semibold text-white sm:text-4xl">{{ stat.value }}</p>
+          </div>
           </div>
         </div>
       </div>
@@ -229,7 +231,7 @@ const testimonials = [
   { name: 'Cody Finch', quote: 'The paint enhancement makes my car look amazing. Thank you so much.' },
   {
     name: 'Eric Farrell',
-    quote: 'I couldnƒ?Tt be happier with Ryanƒ?Ts work! Heƒ?Ts professional, detail-oriented, and clearly takes pride in what he does. If youƒ?Tre looking for a trustworthy local car detailer, this is the place to go.',
+    quote: "I couldn't be happier with Ryan's work! He's professional, detail-oriented, and clearly takes pride in what he does. If you're looking for a trustworthy local car detailer, this is the place to go.",
   },
   {
     name: 'Austen Tanner',
@@ -245,7 +247,7 @@ const testimonials = [
   },
   {
     name: 'Jonathan Hunter',
-    quote: 'Ryan and his team did an amazing jobƒ?"my car looks brand new!',
+    quote: 'Ryan and his team did an amazing job - my car looks brand new!',
   },
   {
     name: 'Trace Ericksen',

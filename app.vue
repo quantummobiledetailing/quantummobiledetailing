@@ -78,7 +78,7 @@
     <NuxtPage />
     <footer class="border-t border-white/5 px-6 py-8 text-xs uppercase tracking-widest text-slate-400 sm:px-10">
       <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p>Serving Saint Helens & the Oregon Northwest • © {{ currentYear }} Quantum Mobile Detailing</p>
+        <p>Serving Saint Helens & the Oregon Northwest - (c) {{ currentYear }} Quantum Mobile Detailing</p>
         <div class="flex gap-4 text-slate-500">
           <a href="mailto:quantummobiledetailingllc@gmail.com" class="link-underline hover:text-brand-primary">quantummobiledetailingllc@gmail.com</a>
           <a href="tel:+15415010698" class="link-underline hover:text-brand-primary">(541) 501-0698</a>
