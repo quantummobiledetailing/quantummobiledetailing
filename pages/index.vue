@@ -88,9 +88,13 @@
             <ul class="mt-4 space-y-2 text-sm text-slate-200">
               <li v-for="perk in service.perks" :key="perk">- {{ perk }}</li>
             </ul>
-            <a href="tel:+15415010698" class="mt-6 inline-flex justify-center rounded-full border border-brand-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-brand-accent hover:bg-brand-primary hover:text-black">
+            <button
+              type="button"
+              class="mt-6 inline-flex justify-center rounded-full border border-brand-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-brand-accent hover:bg-brand-primary hover:text-black"
+              @click="showPhone = true"
+            >
               Call To Book
-            </a>
+            </button>
           </article>
         </div>
       </div>

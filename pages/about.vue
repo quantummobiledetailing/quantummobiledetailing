@@ -75,18 +75,22 @@
         <button type="button" class="btn-primary" @click="showPhone = true">Call For Consultation</button>
         <NuxtLink to="/services" class="btn-outline">Explore Services</NuxtLink>
       </div>
-    </section>
-    <Teleport to="body">
+    </section>\n<Teleport to="body">
       <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
         <div class="drip-panel relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
-          <button
-            class="absolute right-4 top-4 text-slate-400 hover:text-white"
-            @click="showPhone = false"
-            aria-label="Close phone window"
-          >
-            &times;
-          </button>
-          <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+          <div class="flex items-center justify-between">
+            <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+            <button
+              type="button"
+              class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-slate-200 transition hover:border-brand-primary hover:text-brand-primary"
+              @click="showPhone = false"
+              aria-label="Close phone window"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12" />
+              </svg>
+            </button>
+          </div>
           <p class="mt-4 text-center text-3xl font-bold text-white drip-text">
             (541) 501-0698
           </p>

@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <main class="space-y-16 px-6 py-16 sm:px-10">
     <section class="mx-auto max-w-5xl space-y-4 text-center">
       <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Gallery</p>
@@ -108,12 +108,9 @@
       <h2 class="mt-3 text-3xl font-semibold text-white">See more Northwest builds on Instagram @QuantumDetailing</h2>
       <p class="mt-2 text-sm text-slate-300">Ready for your vehicle to make the next before-and-after? We come to you anywhere in Columbia County.</p>
       <button type="button" class="mt-6 btn-primary" @click="showPhone = true">Call For Your Transformation</button>
-    </section>
-
-    <Teleport to="body">
+    </section>\n<Teleport to="body">
       <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
         <div class="drip-panel relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
-          
           <div class="flex items-center justify-between">
             <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
             <button

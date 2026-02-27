@@ -381,27 +381,27 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import("./_nuxt/about-BOfXnbk1.js")
+    component: () => import("./_nuxt/about-DtMYbSwk.js")
   },
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-BKML14eI.js")
+    component: () => import("./_nuxt/index-D44iKGkQ.js")
   },
   {
     name: "booking",
     path: "/booking",
-    component: () => import("./_nuxt/booking-BYVerHDp.js")
+    component: () => import("./_nuxt/booking-BFuY3YH4.js")
   },
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import("./_nuxt/gallery-Blk9MfuU.js")
+    component: () => import("./_nuxt/gallery-DB00-SFe.js")
   },
   {
     name: "services",
     path: "/services",
-    component: () => import("./_nuxt/services-DnMv4G_n.js")
+    component: () => import("./_nuxt/services-YSNIK_TV.js")
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;

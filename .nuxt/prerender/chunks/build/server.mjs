@@ -400,27 +400,27 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import('./about-BOfXnbk1.mjs')
+    component: () => import('./about-DtMYbSwk.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-BKML14eI.mjs')
+    component: () => import('./index-D44iKGkQ.mjs')
   },
   {
     name: "booking",
     path: "/booking",
-    component: () => import('./booking-BYVerHDp.mjs')
+    component: () => import('./booking-BFuY3YH4.mjs')
   },
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import('./gallery-Blk9MfuU.mjs')
+    component: () => import('./gallery-DB00-SFe.mjs')
   },
   {
     name: "services",
     path: "/services",
-    component: () => import('./services-DnMv4G_n.mjs')
+    component: () => import('./services-YSNIK_TV.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;

@@ -14,10 +14,10 @@
         <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Need Detailing?</p>
         <h2 class="mt-3 text-2xl font-semibold text-white">We're taking bookings manually.</h2>
         <p class="mt-4 text-sm text-slate-300">
-          Share your make, model, and goals and we’ll reply with availability plus a quote. Expect a same-day response.
+          Share your make, model, and goals and we'll reply with availability plus a quote. Expect a same-day response.
         </p>
         <div class="mt-6 space-y-3 text-sm font-semibold text-brand-accent">
-          <a href="tel:+15415010698" class="btn-primary w-full justify-center">Call/Text (541) 501-0698</a>
+          <button type="button" class="btn-primary w-full justify-center" @click="showPhone = true">Call/Text (541) 501-0698</button>
           <a href="mailto:quantummobiledetailingllc@gmail.com" class="btn-outline w-full justify-center">Email quantum mobile detailing</a>
         </div>
       </article>
@@ -69,20 +69,60 @@
         </article>
       </div>
       <p class="text-center text-sm text-slate-400">Need help choosing? Call/text <a class="text-brand-primary" href="tel:+15415010698">(541) 501-0698</a> or email <a class="text-brand-primary" href="mailto:quantummobiledetailingllc@gmail.com">quantummobiledetailingllc@gmail.com</a>.</p>
-    </section>
-  </main>
+    </section>\n    <Teleport to="body">
+      <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
+        <div class="drip-panel relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
+          <div class="flex items-center justify-between">
+            <p class="text-xs uppercase tracking-[0.4em] text-brand-primary/80">Call Or Text</p>
+            <button
+              type="button"
+              class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-slate-200 transition hover:border-brand-primary hover:text-brand-primary"
+              @click="showPhone = false"
+              aria-label="Close phone window"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12" />
+              </svg>
+            </button>
+          </div>
+          <p class="mt-4 text-center text-3xl font-bold text-white drip-text">
+            (541) 501-0698
+          </p>
+          <p class="mt-2 text-center text-sm text-slate-400">Tap the number to copy or call from your phone.</p>
+          <div class="mt-6 flex flex-col gap-3">
+            <button class="btn-primary justify-center" type="button" @click="copyPhone">
+              Copy Number
+            </button>
+            <a href="tel:+15415010698" class="btn-outline justify-center">Call Now</a>
+          </div>
+          <p v-if="copied" class="mt-3 text-center text-xs text-green-400">Phone number copied!</p>
+        </div>
+      </div>
+    </Teleport>\n  </main>
 </template>
 
 <script setup lang="ts">
 const bookingPackages = [
-  { title: 'Interior & Exterior Detail', price: '$250', duration: '4 – 4.5 hrs', description: 'Complete inside/out mobile service including wash, clay, interior wipe-down, and glass.' },
-  { title: 'Exterior Detail Only', price: '$130', duration: '1.5 – 2 hrs', description: 'Great between storms—foam bath, paint decontamination, wheels, and sealant.' },
-  { title: 'Interior Detail Only', price: '$160', duration: '2 – 2.5 hrs', description: 'Steam sanitation, hot water extraction, leather treatment, and streak-free glass.' },
-  { title: 'Paint Enhancement', price: '$350', duration: '4.5 – 5 hrs', description: 'Single-stage polish brightens dull paint before applying a protective sealant.' },
-  { title: 'Paint Correction (1-Step)', price: '$550', duration: '6 – 6.5 hrs', description: 'Removes moderate swirls and oxidation in one pass—perfect for daily drivers.' },
-  { title: 'Paint Correction (2-Step)', price: '$750', duration: '7.5 – 8.5 hrs', description: 'Compound + finish for deeper defects before ceramic coating add-ons.' },
-  { title: 'Ceramic Coating', price: '+$1150', duration: '7 – 7.5 hrs', description: 'Long-term coating applied after correction for easier maintenance and gloss.' },
+  { title: 'Interior & Exterior Detail', price: '$250', duration: '4 - 4.5 hrs', description: 'Complete inside/out mobile service including wash, clay, interior wipe-down, and glass.' },
+  { title: 'Exterior Detail Only', price: '$130', duration: '1.5 - 2 hrs', description: 'Great between storms-foam bath, paint decontamination, wheels, and sealant.' },
+  { title: 'Interior Detail Only', price: '$160', duration: '2 - 2.5 hrs', description: 'Steam sanitation, hot water extraction, leather treatment, and streak-free glass.' },
+  { title: 'Paint Enhancement', price: '$350', duration: '4.5 - 5 hrs', description: 'Single-stage polish brightens dull paint before applying a protective sealant.' },
+  { title: 'Paint Correction (1-Step)', price: '$550', duration: '6 - 6.5 hrs', description: 'Removes moderate swirls and oxidation in one pass-perfect for daily drivers.' },
+  { title: 'Paint Correction (2-Step)', price: '$750', duration: '7.5 - 8.5 hrs', description: 'Compound + finish for deeper defects before ceramic coating add-ons.' },
+  { title: 'Ceramic Coating', price: '+$1150', duration: '7 - 7.5 hrs', description: 'Long-term coating applied after correction for easier maintenance and gloss.' },
 ]
 
 useRevealOnScroll()
+const showPhone = ref(false)
+const copied = ref(false)
+
+const copyPhone = async () => {
+  try {
+    await navigator.clipboard.writeText('(541) 501-0698')
+    copied.value = true
+    setTimeout(() => (copied.value = false), 2000)
+  } catch {
+    copied.value = false
+  }
+}
 </script>
