@@ -410,17 +410,17 @@ const _routes = [
   {
     name: "booking",
     path: "/booking",
-    component: () => import('./booking-BFuY3YH4.mjs')
+    component: () => import('./booking-Cgl0bFWu.mjs')
   },
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import('./gallery-DB00-SFe.mjs')
+    component: () => import('./gallery-CvBKFdB8.mjs')
   },
   {
     name: "services",
     path: "/services",
-    component: () => import('./services-YSNIK_TV.mjs')
+    component: () => import('./services-sM1WDbMZ.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;

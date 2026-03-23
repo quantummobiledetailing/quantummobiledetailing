@@ -105,10 +105,10 @@
 const bookingPackages = [
   { title: 'Interior & Exterior Detail', price: '$250', duration: '4 - 4.5 hrs', description: 'Complete inside/out mobile service including wash, clay, interior wipe-down, and glass.' },
   { title: 'Exterior Detail Only', price: '$130', duration: '1.5 - 2 hrs', description: 'Great between storms-foam bath, paint decontamination, wheels, and sealant.' },
-  { title: 'Interior Detail Only', price: '$160', duration: '2 - 2.5 hrs', description: 'Steam sanitation, hot water extraction, leather treatment, and streak-free glass.' },
-  { title: 'Paint Enhancement', price: '$350', duration: '4.5 - 5 hrs', description: 'Single-stage polish brightens dull paint before applying a protective sealant.' },
-  { title: 'Paint Correction (1-Step)', price: '$550', duration: '6 - 6.5 hrs', description: 'Removes moderate swirls and oxidation in one pass-perfect for daily drivers.' },
-  { title: 'Paint Correction (2-Step)', price: '$750', duration: '7.5 - 8.5 hrs', description: 'Compound + finish for deeper defects before ceramic coating add-ons.' },
+  { title: 'Interior Detail Only', price: '$170', duration: '2 - 2.5 hrs', description: 'Steam sanitation, hot water extraction, leather treatment, and streak-free glass.' },
+  { title: 'Paint Enhancement', price: '$100/hr', duration: '2 hr minimum', description: 'Single-stage polish brightens dull paint before applying a protective sealant.' },
+  { title: 'Paint Correction (1-Step)', price: '$100/hr', duration: '4 hr minimum', description: 'Removes moderate swirls and oxidation in one pass-perfect for daily drivers.' },
+  { title: 'Paint Correction (2-Step)', price: '$100/hr', duration: '6 hr minimum', description: 'Compound + finish for deeper defects before ceramic coating add-ons.' },
   { title: 'Ceramic Coating', price: '+$1150', duration: '7 - 7.5 hrs', description: 'Long-term coating applied after correction for easier maintenance and gloss.' },
 ]
 

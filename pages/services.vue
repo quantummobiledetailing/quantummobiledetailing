@@ -20,8 +20,10 @@
           <div class="flex items-start justify-between gap-4">
             <span class="text-xs uppercase tracking-[0.3em] text-brand-primary/70">{{ servicePackage.tier }}</span>
             <div class="text-right">
-              <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
-              <p class="text-2xl font-semibold text-white">{{ servicePackage.price }}+</p>
+              <p v-if="!servicePackage.hourly" class="text-[10px] uppercase tracking-[0.3em] text-slate-500">Starts at</p>
+              <p class="text-2xl font-semibold text-white">
+                {{ servicePackage.price }}<span v-if="!servicePackage.hourly">+</span>
+              </p>
             </div>
           </div>
           <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Time: {{ servicePackage.duration }}</p>
@@ -181,7 +183,7 @@ const packages = [
   {
     tier: 'Interior Only',
     title: 'Interior Detail',
-    price: '$160',
+    price: '$170',
     duration: '2 - 2.5 hrs',
     summary: 'Deep interior cleanse ideal after road trips, pets, or wet-weather commutes.',
     features: [
@@ -194,8 +196,9 @@ const packages = [
   {
     tier: 'Gloss Boost',
     title: 'Paint Enhancement',
-    price: '$350',
-    duration: '4.5 - 5 hrs',
+    price: '$100/hr',
+    duration: '2 hr minimum',
+    hourly: true,
     summary: 'Single-stage polish to brighten dull paint before the next rainy season.',
     features: [
       'Exterior detail with two-step wash + towel dry',
@@ -207,8 +210,9 @@ const packages = [
   {
     tier: 'Correction',
     title: 'Paint Correction (1-Step)',
-    price: '$550',
-    duration: '6 - 6.5 hrs',
+    price: '$100/hr',
+    duration: '4 hr minimum',
+    hourly: true,
     summary: 'Ideal for moderate defects on daily drivers that need a serious refresh.',
     features: [
       'Exterior detail plus cutting and finish polish stages',
@@ -220,8 +224,9 @@ const packages = [
   {
     tier: 'Correction',
     title: 'Paint Correction (2-Step)',
-    price: '$750',
-    duration: '7.5 - 8.5 hrs',
+    price: '$100/hr',
+    duration: '6 hr minimum',
+    hourly: true,
     summary: 'For darker finishes or vehicles requiring heavier correction before coating.',
     features: [
       'Exterior detail + deep cut, cutting, and finish polish',

@@ -391,17 +391,17 @@ const _routes = [
   {
     name: "booking",
     path: "/booking",
-    component: () => import("./_nuxt/booking-BFuY3YH4.js")
+    component: () => import("./_nuxt/booking-Cgl0bFWu.js")
   },
   {
     name: "gallery",
     path: "/gallery",
-    component: () => import("./_nuxt/gallery-DB00-SFe.js")
+    component: () => import("./_nuxt/gallery-CvBKFdB8.js")
   },
   {
     name: "services",
     path: "/services",
-    component: () => import("./_nuxt/services-YSNIK_TV.js")
+    component: () => import("./_nuxt/services-sM1WDbMZ.js")
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
