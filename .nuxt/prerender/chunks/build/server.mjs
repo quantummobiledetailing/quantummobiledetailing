@@ -400,12 +400,12 @@ const _routes = [
   {
     name: "about",
     path: "/about",
-    component: () => import('./about-DtMYbSwk.mjs')
+    component: () => import('./about-C6EbPEYs.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-D44iKGkQ.mjs')
+    component: () => import('./index-C8i1VBSc.mjs')
   },
   {
     name: "booking",
@@ -420,7 +420,7 @@ const _routes = [
   {
     name: "services",
     path: "/services",
-    component: () => import('./services-sM1WDbMZ.mjs')
+    component: () => import('./services-BZfxr93X.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
