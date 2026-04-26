@@ -5,6 +5,20 @@
         <div class="flex justify-center">
           <img src="/images/logo-watermark.png" alt="Quantum Mobile Detailing logo" class="h-64 w-auto max-w-sm sm:max-w-md" />
         </div>
+        <div class="mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950/70 shadow-2xl shadow-black/30 reveal" data-reveal data-reveal-delay="80">
+          <video
+            class="h-56 w-full object-cover sm:h-72 lg:h-96"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            controls
+          >
+            <source src="/images/Home_Video/20260318_112646_c248a4a5.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div class="hero-layout">
           <div class="min-w-0 space-y-6 text-center lg:text-left">
           <p class="text-sm uppercase tracking-[0.4em] text-brand-primary/80">Saint Helens - Oregon Northwest</p>

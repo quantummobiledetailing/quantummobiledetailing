@@ -159,7 +159,7 @@ const packages = [
   {
     tier: 'Full Service',
     title: 'Interior & Exterior Detail',
-    price: '$250',
+    price: '$260',
     duration: '4 - 4.5 hrs',
     summary: 'Bundle pricing that combines the full Exterior Detail and Interior Detail in one visit.',
     features: [
@@ -183,7 +183,7 @@ const packages = [
   {
     tier: 'Interior Only',
     title: 'Interior Detail',
-    price: '$170',
+    price: '$180',
     duration: '2 - 2.5 hrs',
     summary: 'Deep interior cleanse ideal after road trips, pets, or wet-weather commutes.',
     features: [

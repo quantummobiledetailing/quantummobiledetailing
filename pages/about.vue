@@ -30,7 +30,13 @@
 
       <article class="glow-card card-hover flex h-full flex-col overflow-hidden rounded-3xl p-0 reveal" data-reveal data-reveal-delay="120">
         <div class="relative h-56 w-full overflow-hidden border-b border-white/10 sm:h-64" aria-label="Process driven detailing in action">
-          <img :src="processImage" alt="" class="h-full w-full object-cover" />
+          <img
+            src="/images/subaru-process.jpg"
+            alt="Detailing process on a Subaru"
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
         </div>
         <div class="flex flex-1 flex-col p-6">
           <h2 class="text-2xl font-semibold text-white">Process driven</h2>
@@ -75,7 +81,8 @@
         <button type="button" class="btn-primary" @click="showPhone = true">Call For Consultation</button>
         <NuxtLink to="/services" class="btn-outline">Explore Services</NuxtLink>
       </div>
-    </section>\n<Teleport to="body">
+    </section>
+    <Teleport to="body">
       <div v-if="showPhone" class="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
         <div class="drip-panel relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-primary/30 bg-slate-950 p-8 shadow-xl">
           <div class="flex items-center justify-between">
@@ -109,8 +116,6 @@
 </template>
 
 <script setup lang="ts">
-const processImage = new URL('~/assets/images/subaru.jpg', import.meta.url).href
-
 useRevealOnScroll()
 
 const showPhone = ref(false)
